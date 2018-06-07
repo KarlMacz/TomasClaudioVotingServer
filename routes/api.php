@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('api')->prefix('api/json')->group(function() {
+Route::middleware('api')->prefix('json')->group(function() {
     Route::post('auth', 'ApiController@auth');
 });
