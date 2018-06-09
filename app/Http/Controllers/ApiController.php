@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Accounts;
+
 class ApiController extends Controller
 {
     public function auth(Request $request)
@@ -26,7 +28,7 @@ class ApiController extends Controller
         } else {
             $data = [
                 'status' => 'failed',
-                'message' => 'Invalid username and/or password.'
+                'message' => 'Invalid username or student id number.'
             ];
         }
 
