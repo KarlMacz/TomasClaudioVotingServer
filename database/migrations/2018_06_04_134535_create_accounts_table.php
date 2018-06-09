@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->string('username')->unique();
             $table->string('type')->default('Student');
-            $table->string('image')->unique();
+            $table->string('image')->unique()->nullable();
             $table->unsignedInteger('user_id');
             $table->timestamps();
         });
