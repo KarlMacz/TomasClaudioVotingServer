@@ -13,7 +13,14 @@ class CreateVotesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('votes', function(Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('account_id');
+            $table->foreign('account_id')->references('id')->on('accounts');
+            $table->unsignedInteger('candidate_id');
+            $table->foreign('candidate_id')->references('id')->on('candidates');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateVotesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('votes');
     }
 }
