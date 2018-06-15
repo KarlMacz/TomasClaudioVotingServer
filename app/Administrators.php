@@ -27,7 +27,7 @@ class Administrators extends Model
      */
     protected $hidden = [];
 
-    public function account()
+    public function account_info()
     {
         return $this->hasOne('App\Accounts', 'user_id', 'id');
     }

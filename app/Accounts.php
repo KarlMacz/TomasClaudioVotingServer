@@ -31,4 +31,9 @@ class Accounts extends Authenticatable
             return $this->belongsTo('App\Students', 'user_id', 'id');
         }
     }
+
+    public function votes()
+    {
+        return $this->hasMany('App\Votes', 'account_id', 'id');
+    }
 }
