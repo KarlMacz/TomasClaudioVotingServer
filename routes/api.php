@@ -15,4 +15,5 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->prefix('json')->group(function() {
     Route::post('auth', 'ApiController@auth');
+    Route::post('auth', 'ApiController@auth');
 });

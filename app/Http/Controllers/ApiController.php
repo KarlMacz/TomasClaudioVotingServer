@@ -8,12 +8,29 @@ use App\Accounts;
 
 class ApiController extends Controller
 {
+    private function verifyApiKey($applicationKey)
+    {
+        if($applicationKey === 'bf536f9c54b5e47d8e9e0a94c239008dbdd9831fc27c861f7049988b7267bde6') {
+            return true;
+        }
+
+        return false;
+    }
+
     public function auth(Request $request)
     {
+        if(!$this->verifyApiKey($request->input('app_key'))) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Unauthorized access.'
+            ]);
+        }
+
+        $resp = [];
         $account = Accounts::where('username', $request->input('username'))->first();
 
         if($account) {
-            $data = [
+            $resp = [
                 'status' => 'ok',
                 'message' => 'Login successful.',
                 'data' => [
@@ -26,12 +43,24 @@ class ApiController extends Controller
                 ]
             ];
         } else {
-            $data = [
+            $resp = [
                 'status' => 'failed',
                 'message' => 'Invalid username or student id number.'
             ];
         }
 
-        return response()->json($data);
+        return response()->json($resp);
+    }
+
+    public function (Request $request)
+    {
+        if(!$this->verifyApiKey($request->input('app_key'))) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Unauthorized access.'
+            ]);
+        }
+
+        return response()->json($resp);
     }
 }
