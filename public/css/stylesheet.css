@@ -1,0 +1,127 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto';
+    font-size: 15px;
+    min-width: 800px;
+}
+
+.shadow {
+    box-shadow: 0 2px 2px rgba(34, 34, 34, 0.25);
+}
+
+.container {
+    position: relative;
+    padding: 0 15px;
+}
+
+.container.wide {
+    padding: 0 10%;
+}
+
+.navbar {
+    background-color: #4c9261;
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar.fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.navbar > .content {
+    display: flex;
+    font-size: 0;
+    padding: 0 15px;
+}
+
+.navbar > .content.wide {
+    padding: 0 10%;
+}
+
+.navbar > .content > .left {
+    order: 1;
+}
+
+.navbar > .content > .right {
+    order: 2;
+    margin-left: auto;
+}
+
+.navbar > .content .item {
+    align-items: center;
+    color: white;
+    display: inline-block;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 0 15px;
+    line-height: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    transition: 0.25s;
+}
+
+.navbar > .content .item.title {
+    font-family: 'Satisfy';
+    font-size: 25px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar > .content .item:not(.title):hover {
+    background-color: #387e4d;
+}
+
+.navbar > .content .item.active:not(.title) {
+    background-color: #387e4d;
+    border-bottom: 3px solid #5abf79;
+}
+
+.footer {
+    align-items: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    height: 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer.fixed {
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.footer > .content {
+    font-size: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.body-content {
+    padding: 15px 0;
+}
+
+.body-content.fixed-navbar {
+    padding-top: 75px;
+}
+
+.body-content.fixed-footer {
+    padding-bottom: 75px;
+}
