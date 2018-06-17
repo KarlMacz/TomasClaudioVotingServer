@@ -10,4 +10,14 @@ class HomeController extends Controller
     {
         return view('home.index');
     }
+
+    public function electionResults()
+    {
+        return view('home.results');
+    }
+
+    public function download()
+    {
+        return view('home.download');
+    }
 }

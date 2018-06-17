@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home.get.index');
+Route::get('election_results', 'HomeController@electionResults')->name('home.get.election_results');
+Route::get('download', 'HomeController@download')->name('home.get.download');
