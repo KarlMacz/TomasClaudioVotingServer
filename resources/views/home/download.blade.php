@@ -14,7 +14,7 @@
         </div>
     </nav>
     <div class="body-content fixed-navbar fixed-footer">
-        <div class="container">
+        <div class="container wide">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>

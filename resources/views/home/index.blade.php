@@ -14,17 +14,11 @@
         </div>
     </nav>
     <div class="body-content fixed-navbar fixed-footer">
-        <div class="container">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
+        <div class="container wide">
+            <h1 class="prompt success text-center">Candidates</h1>
+            @foreach($positions as $position)
+                <h3>Running for {{ $position->name }}</h3>
+            @endforeach
         </div>
     </div>
     <div class="footer fixed">

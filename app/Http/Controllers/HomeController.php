@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Positions;
+
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $data['positions'] = Positions::all();
+
+        return view('home.index', $data);
     }
 
     public function electionResults()

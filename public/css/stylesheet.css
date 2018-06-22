@@ -11,6 +11,18 @@ body {
     min-width: 800px;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
 .shadow {
     box-shadow: 0 2px 2px rgba(34, 34, 34, 0.25);
 }
@@ -124,4 +136,56 @@ body {
 
 .body-content.fixed-footer {
     padding-bottom: 75px;
+}
+
+h1.prompt {
+    font-size: 2em;
+}
+
+h2.prompt {
+    font-size: 1.5em;
+}
+
+h3.prompt {
+    font-size: 1.17em;
+}
+
+h4.prompt {
+    font-size: 1em;
+}
+
+h5.prompt {
+    font-size: 0.83em;
+}
+
+h6.prompt {
+    font-size: 0.67em;
+}
+
+.prompt {
+    background-color: #ddd;
+    border-radius: 4px;
+    font-size: 20px;
+    padding: 15px;
+    margin: 0 0 15px 0;
+}
+
+.prompt.info {
+    background-color: #5c8dbf;
+    color: white;
+}
+
+.prompt.success {
+    background-color: #5abf79;
+    color: white;
+}
+
+.prompt.warning {
+    background-color: #eacf6c;
+    color: white;
+}
+
+.prompt.danger {
+    background-color: #c73a4e;
+    color: white;
 }

@@ -28,5 +28,22 @@ class AccountSeeder extends Seeder
                 'user_id' => $admin->id
             ]);
         }
+
+        $student = Students::create([
+            'first_name' => 'Karl',
+            'middle_name' => null,
+            'last_name' => 'Macz',
+            'email' => 'karljarren0308@gmail.com',
+            'college' => 'College of Information Technology',
+            'course' => 'Bachelor of Science in Computer Science'
+        ]);
+
+        if($student) {
+            Accounts::create([
+                'username' => '2012012345',
+                'type' => 'Student',
+                'user_id' => $student->id
+            ]);
+        }
     }
 }
