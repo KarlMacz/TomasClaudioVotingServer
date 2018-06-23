@@ -18,6 +18,7 @@
             <h1 class="prompt success text-center">Candidates</h1>
             @foreach($positions as $position)
                 <h3>Running for {{ $position->name }}</h3>
+                <div class="card-swiper"></div>
             @endforeach
         </div>
     </div>
