@@ -19,6 +19,7 @@ class CreateAccountsTable extends Migration
             $table->string('type')->default('Student');
             $table->string('image')->unique()->nullable();
             $table->unsignedInteger('user_id');
+            $table->boolean('has_voted')->default(false);
             $table->timestamps();
         });
     }

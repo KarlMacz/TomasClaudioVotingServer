@@ -19,11 +19,16 @@ class StudentSeeder extends Seeder
         $faker = FakerFactory::create();
 
         for($i = 0; $i < 100; $i++) {
+            $college = $this->randomCollege();
+            $course = $this->randomCourse($college);
+
             $student = Students::create([
                 'first_name' => $faker->firstName,
                 'middle_name' => (mt_rand(0, 9) % 2 === 0 ? $faker->lastName : null),
                 'last_name' => $faker->lastName,
-                'email' => $faker->unique()->email
+                'email' => $faker->unique()->email,
+                'college' => $college,
+                'course' => $course
             ]);
 
             if($student) {
@@ -36,7 +41,7 @@ class StudentSeeder extends Seeder
         }
     }
 
-    public function randomCollege()
+    private function randomCollege()
     {
         $colleges = [
             'College of Arts and Sciences',
@@ -49,7 +54,7 @@ class StudentSeeder extends Seeder
         return $colleges[mt_rand(0, count($colleges) - 1)];
     }
 
-    public function randomCourse($college)
+    private function randomCourse($college)
     {
         switch($college) {
             case 'College of Arts and Sciences':
@@ -80,8 +85,40 @@ class StudentSeeder extends Seeder
                 ];
 
                 break;
+            case 'College of Information Technology':
+                $courses = [
+                    'Bachelor of Science in Computer Science',
+                    'Associate in Computer Technology'
+                ];
+
+                break;
+            case 'College of Education':
+                $courses = [
+                    'Bachelor of Elementary Education',
+                    'Bachelor of Secondary Education Major in English',
+                    'Bachelor of Secondary Education Major in Filipino',
+                    'Bachelor of Secondary Education Major in Mathematics',
+                    'Bachelor of Secondary Education Major in Social Studies',
+                    'Bachelor of Secondary Education Major in Values Education',
+                    'Bachelor of Secondary Education Major in Biological and Physical Science',
+                    'Bachelor of Secondary Education Major in MAPEH'
+                ];
+
+                break;
+            case 'College of Hotel and Restaurant Management':
+                $courses = [
+                    'Bachelor of Science in Hotel and Restaurant Management'
+                ];
+
+                break;
+            default:
+                $courses = [];
+
+                break;
         }
 
-        return $courses[mt_rand(0, count($courses) - 1)];
+        if($courses > 0) {
+            return $courses[mt_rand(0, count($courses) - 1)];
+        }
     }
 }

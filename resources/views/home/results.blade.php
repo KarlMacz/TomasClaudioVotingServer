@@ -4,7 +4,7 @@
     <nav class="navbar fixed-top shadow">
         <div class="content">
             <div class="left">
-                <div class="item title">Worth Votes</div>
+                <div class="item title">{{ config('app.name') }}</div>
             </div>
             <div class="right">
                 <a href="{{ route('home.get.index') }}" class="item">Home</a>
@@ -15,16 +15,27 @@
     </nav>
     <div class="body-content fixed-navbar fixed-footer">
         <div class="container wide">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
+            <h1 class="prompt success text-center">Candidates</h1>
+            @foreach($positions as $position)
+                <h2 class="text-center">Running for {{ $position->name }}</h2>
+                <div class="card-grid">
+                    @if($position->candidates->count() > 0)
+                        @foreach($position->candidates as $candidate)
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="{{ asset('img/test_image.png') }}">
+                                </div>
+                                <div class="card-header">
+                                    <div class="card-title">{{ $candidate->student_info->full_name() }}</div>
+                                    <div class="card-subtitle">{{ $candidate->party_info->name }} Party</div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="prompt">No candidates running for this position.</div>
+                    @endif
+                </div>
+            @endforeach
         </div>
     </div>
     <div class="footer fixed">

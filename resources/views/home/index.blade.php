@@ -4,7 +4,7 @@
     <nav class="navbar fixed-top shadow">
         <div class="content">
             <div class="left">
-                <div class="item title">Worth Votes</div>
+                <div class="item title">{{ config('app.name') }}</div>
             </div>
             <div class="right">
                 <a href="{{ route('home.get.index') }}" class="item active">Home</a>
@@ -15,10 +15,50 @@
     </nav>
     <div class="body-content fixed-navbar fixed-footer">
         <div class="container wide">
-            <h1 class="prompt success text-center">Candidates</h1>
+            <h1 class="prompt success text-center">Voter Statistics</h1>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tag">
+                            <div class="tag-header">
+                                <div class="tag-label large">{{ $voted_students_count }}</div>
+                                <div class="tag-label small">Number of students who already voted</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tag">
+                            <div class="tag-header">
+                                <div class="tag-label large">{{ $students->count() }}</div>
+                                <div class="tag-label small">Total number of students</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <h1 class="prompt info text-center">Candidates</h1>
             @foreach($positions as $position)
-                <h3>Running for {{ $position->name }}</h3>
-                <div class="card-swiper"></div>
+                <h2 class="text-center">Running for {{ $position->name }}</h2>
+                <div class="card-grid">
+                    @if($position->candidates->count() > 0)
+                        @foreach($position->candidates as $candidate)
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="{{ asset('img/test_image.png') }}">
+                                </div>
+                                <div class="card-header">
+                                    <div class="card-title">{{ $candidate->student_info->full_name() }}</div>
+                                    <div class="card-subtitle">{{ $candidate->party_info->name }} Party</div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="prompt">No candidates running for this position.</div>
+                    @endif
+                </div>
             @endforeach
         </div>
     </div>

@@ -51,16 +51,4 @@ class ApiController extends Controller
 
         return response()->json($resp);
     }
-
-    public function (Request $request)
-    {
-        if(!$this->verifyApiKey($request->input('app_key'))) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Unauthorized access.'
-            ]);
-        }
-
-        return response()->json($resp);
-    }
 }

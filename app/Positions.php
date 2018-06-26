@@ -22,6 +22,6 @@ class Positions extends Model
 
     public function candidates()
     {
-        return $this->hasMany('App\Candidates', 'party_id', 'id');
+        return $this->hasMany('App\Candidates', 'position_id', 'id');
     }
 }

@@ -8,7 +8,16 @@ body {
 body {
     font-family: 'Roboto';
     font-size: 15px;
-    min-width: 800px;
+}
+
+a.image-link {
+    display: inline-block;
+    font-size: 0;
+    text-decoration: none;
+}
+
+a.image-link > img {
+    height: 40px;
 }
 
 .text-center {
@@ -165,9 +174,8 @@ h6.prompt {
 .prompt {
     background-color: #ddd;
     border-radius: 4px;
-    font-size: 20px;
     padding: 15px;
-    margin: 0 0 15px 0;
+    margin: 10px 0 15px 0;
 }
 
 .prompt.info {
@@ -188,4 +196,118 @@ h6.prompt {
 .prompt.danger {
     background-color: #c73a4e;
     color: white;
+}
+
+.card {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(34, 34, 34, 0.25);
+    overflow: hidden;
+    margin: 5px;
+}
+
+.card > .card-image {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    max-height: 250px;
+    width: 100%;
+}
+
+.card > .card-image > img {
+    width: 100%;
+}
+
+.card > .card-header {
+    padding: 10px 15px;
+}
+
+.card > .card-header > .card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card > .card-header > .card-subtitle {
+    font-size: 10px;
+    /*font-weight: bold;*/
+}
+
+.card > .card-body {
+    flex: 1;
+    padding: 10px 15px;
+}
+
+.card > .card-header + .card-body {
+    padding-top: 0;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.card-grid > .card {
+    width: 250px;
+}
+
+.tag > .tag-header {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.tag > .tag-header > .tag-label {
+    font-weight: bold;
+}
+
+.tag > .tag-header > .tag-label.large {
+    font-size: 50px;
+}
+
+.tag > .tag-header > .tag-label.medium {
+    font-size: 20px;
+}
+
+.tag > .tag-header > .tag-label.small {
+    font-size: 10px;
+}
+
+.tag > .tag-header + .tag-list {
+    margin-top: 25px;
+}
+
+.tag > .tag-list > .tag-label {
+    font-size: 17px;
+    font-weight: bold;
+    text-align: left;
+    margin: 0 0 5px 0;
+}
+
+.tag > .tag-list > ul.tag-list {
+    text-align: left;
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0;
+}
+
+.tag > .tag-list > ul.tag-list > li {
+    border-bottom: 2px solid #e5e5e5;
+    padding: 10px 5px;
+}
+
+.tag > .tag-list > ul.tag-list > li:last-child {
+    border-bottom: none;
+}
+
+.button {
+    background-color: #eee;
+    border: none;
+    display: inline-block;
+    padding: 0 15px;
+    line-height: 40px;
+    height: 40px;
+    min-width: 40px;
 }

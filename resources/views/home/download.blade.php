@@ -4,7 +4,7 @@
     <nav class="navbar fixed-top shadow">
         <div class="content">
             <div class="left">
-                <div class="item title">Worth Votes</div>
+                <div class="item title">{{ config('app.name') }}</div>
             </div>
             <div class="right">
                 <a href="{{ route('home.get.index') }}" class="item">Home</a>
@@ -15,16 +15,11 @@
     </nav>
     <div class="body-content fixed-navbar fixed-footer">
         <div class="container wide">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolor minus numquam nam tenetur nihil ipsum quas voluptates amet dolorem expedita dicta et libero, architecto soluta qui minima aliquam magni?</p>
+            <div class="text-center" style="margin-top: 50px;">
+                <h1>Download our Mobile Application</h1>
+                <a href="" class="image-link"><img src="{{ asset('img/google_play_badge.svg') }}"></a>
+                <a href="" class="image-link"><img src="{{ asset('img/app_store_badge.svg') }}"></a>
+            </div>
         </div>
     </div>
     <div class="footer fixed">
