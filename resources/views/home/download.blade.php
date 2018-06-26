@@ -1,29 +1,32 @@
-@extends('layouts.master')
+@extends('layouts.mobile')
 
 @section('content')
-    <nav class="navbar fixed-top shadow">
-        <div class="content">
-            <div class="left">
-                <div class="item title">{{ config('app.name') }}</div>
-            </div>
-            <div class="right">
-                <a href="{{ route('home.get.index') }}" class="item">Home</a>
-                <a href="{{ route('home.get.election_results') }}" class="item">Election Results</a>
-                <a href="{{ route('home.get.download') }}" class="item active">Download</a>
-            </div>
-        </div>
-    </nav>
-    <div class="body-content fixed-navbar fixed-footer">
-        <div class="container wide">
-            <div class="text-center" style="margin-top: 50px;">
+    @if($platform !== 'AndroidOS' && $platform !== 'iOS')
+        <a href="{{ route('home.get.index') }}" class="bling-bling">&#8249; Go Back</a>
+    @endif
+    <div class="moblify">
+        <div class="moblify-body">
+            <div class="text-center">
+                <img src="{{ asset('img/tcc_logo.png') }}" style="margin-top: -50px; height: 100px;">
+                <div style="font-family: 'Satisfy'; font-size: 40px; margin-top: -5px; margin-bottom: 40px;">{{ config('app.name') }}</div>
                 <h1>Download our Mobile Application</h1>
-                <a href="" class="image-link"><img src="{{ asset('img/google_play_badge.svg') }}"></a>
-                <a href="" class="image-link"><img src="{{ asset('img/app_store_badge.svg') }}"></a>
+                @if($platform === 'AndroidOS')
+                    <a href="" class="image-link"><img src="{{ asset('img/google_play_badge.svg') }}"></a>
+                    <span><strong>OR</strong></span>
+                    <a href="" class="image-link"><img src="{{ asset('img/apk_file_badge.png') }}"></a>
+                @elseif($platform === 'iOS')
+                    <a href="" class="image-link"><img src="{{ asset('img/app_store_badge.svg') }}"></a>
+                @else
+                    <h4>For Android</h4>
+                    <a href="" class="image-link"><img src="{{ asset('img/google_play_badge.svg') }}"></a>
+                    <span><strong>OR</strong></span>
+                    <a href="" class="image-link"><img src="{{ asset('img/apk_file_badge.png') }}"></a>
+                    <h4>For iOS</h4>
+                    <a href="" class="image-link"><img src="{{ asset('img/app_store_badge.svg') }}"></a>
+                @endif
             </div>
         </div>
-    </div>
-    <div class="footer fixed">
-        <div class="content">
+        <div class="moblify-footer">
             <div>Copyright © 2018 Supreme Student Council of Leaders.</div>
             <div>All Rights Reserved.</div>
         </div>
