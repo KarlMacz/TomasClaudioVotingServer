@@ -21,9 +21,7 @@ class HomeController extends Controller
     public function index()
     {
         if($this->agent->isMobile()) {
-            return view('home.dl', [
-                'platform' => $this->agent->platform()
-            ]);
+            return redirect()->route('home.get.download');
         }
 
         $data['voted_students_count'] = Accounts::where('type', 'Student')->where('has_voted', true)->count();
@@ -36,9 +34,7 @@ class HomeController extends Controller
     public function electionResults()
     {
         if($this->agent->isMobile()) {
-            return view('home.dl', [
-                'platform' => $this->agent->platform()
-            ]);
+            return redirect()->route('home.get.download');
         }
 
         $data['positions'] = Positions::all();
@@ -48,12 +44,8 @@ class HomeController extends Controller
 
     public function download()
     {
-        if($this->agent->isMobile()) {
-            return view('home.dl', [
-                'platform' => $this->agent->platform()
-            ]);
-        }
-
-        return view('home.download');
+        return view('home.download', [
+            'platform' => $this->agent->platform()
+        ]);
     }
 }
