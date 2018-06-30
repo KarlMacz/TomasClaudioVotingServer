@@ -29,6 +29,16 @@
                                     <div class="card-title">{{ $candidate->student_info->full_name() }}</div>
                                     <div class="card-subtitle">{{ $candidate->party_info->name }} Party</div>
                                 </div>
+                                <div class="card-body">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 50%;"></div>
+                                        <div class="progress-text">0 votes</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 50%;"></div>
+                                        <div class="progress-text">0 votes</div>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     @else

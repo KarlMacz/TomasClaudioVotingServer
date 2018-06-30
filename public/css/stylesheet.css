@@ -116,6 +116,7 @@ a.image-link > img {
     display: flex;
     position: relative;
     justify-content: center;
+    z-index: 1000;
     height: 60px;
     width: 100%;
     box-sizing: border-box;
@@ -302,6 +303,38 @@ h6.prompt {
 
 .tag > .tag-list > ul.tag-list > li:last-child {
     border-bottom: none;
+}
+
+.progress {
+    background-color: #f7f7f7;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(175, 175, 175, 0.5);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 5px;
+    line-height: 15px;
+    height: 15px;
+    width: 100%;
+}
+
+.progress > .progress-bar {
+    background-color: #4c9261;
+    box-shadow: inset 0 -1px 1px rgba(34, 34, 34, 0.25);
+    height: 100%;
+    width: 0;
+}
+
+.progress > .progress-text {
+    /*color: white;*/
+    display: inline-block;
+    font-size: 10px;
+    position: absolute;
+    text-align: center;
+    /*text-shadow: 0 1px 1px rgba(34, 34, 34, 0.75);*/
+    z-index: 1;
+    top: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .button {
