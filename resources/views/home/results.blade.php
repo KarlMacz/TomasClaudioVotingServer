@@ -32,11 +32,7 @@
                                 <div class="card-body">
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 50%;"></div>
-                                        <div class="progress-text">0 votes</div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 50%;"></div>
-                                        <div class="progress-text">0 votes</div>
+                                        <div class="progress-text">{{ $candidate->votes->count() . ($candidate->votes->count() === 1 ? ' vote' : ' votes') }}</div>
                                     </div>
                                 </div>
                             </div>

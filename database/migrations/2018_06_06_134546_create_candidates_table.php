@@ -21,6 +21,7 @@ class CreateCandidatesTable extends Migration
             $table->foreign('position_id')->references('id')->on('positions');
             $table->unsignedInteger('party_id');
             $table->foreign('party_id')->references('id')->on('parties');
+            $table->string('candidacy_image')->unique()->nullable();
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as FakerFactory;
 
 use App\Accounts;
+use App\Candidates;
 use App\Students;
 
 class StudentSeeder extends Seeder
@@ -37,6 +38,14 @@ class StudentSeeder extends Seeder
                     'type' => 'Student',
                     'user_id' => $student->id
                 ]);
+
+                if($student->id % 2 === 0 && $student->id > 90) {
+                    Candidates::insert([
+                        'student_id' => $student->id,
+                        'position_id' => 1,
+                        'party_id' => 1
+                    ]);
+                }
             }
         }
     }

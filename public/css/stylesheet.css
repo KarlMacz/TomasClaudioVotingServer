@@ -22,6 +22,145 @@ a.image-link > img {
     height: 40px;
 }
 
+.container {
+    position: relative;
+    padding: 0 15px;
+}
+
+.container.wide {
+    padding: 0 10%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.row,
+.row.align-left {
+    justify-content: left;
+}
+
+.row.align-middle {
+    justify-content: center;
+}
+
+.row.align-right {
+    justify-content: flex-end;
+}
+
+.column {
+    flex: 1;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    min-width: 8.333333333333333%;
+}
+
+.column.span-1 {
+    min-width: calc(8.333333333333333% * 1);
+    max-width: calc(8.333333333333333% * 1);
+}
+
+.column.span-2 {
+    min-width: calc(8.333333333333333% * 2);
+    max-width: calc(8.333333333333333% * 2);
+}
+
+.column.span-3 {
+    min-width: calc(8.333333333333333% * 3);
+    max-width: calc(8.333333333333333% * 3);
+}
+
+.column.span-4 {
+    min-width: calc(8.333333333333333% * 4);
+    max-width: calc(8.333333333333333% * 4);
+}
+
+.column.span-5 {
+    min-width: calc(8.333333333333333% * 5);
+    max-width: calc(8.333333333333333% * 5);
+}
+
+.column.span-6 {
+    min-width: calc(8.333333333333333% * 6);
+    max-width: calc(8.333333333333333% * 6);
+}
+
+.column.span-7 {
+    min-width: calc(8.333333333333333% * 7);
+    max-width: calc(8.333333333333333% * 7);
+}
+
+.column.span-8 {
+    min-width: calc(8.333333333333333% * 8);
+    max-width: calc(8.333333333333333% * 8);
+}
+
+.column.span-9 {
+    min-width: calc(8.333333333333333% * 9);
+    max-width: calc(8.333333333333333% * 9);
+}
+
+.column.span-10 {
+    min-width: calc(8.333333333333333% * 10);
+    max-width: calc(8.333333333333333% * 10);
+}
+
+.column.span-11 {
+    min-width: calc(8.333333333333333% * 11);
+    max-width: calc(8.333333333333333% * 11);
+}
+
+.column.span-12 {
+    min-width: calc(8.333333333333333% * 12);
+    max-width: calc(8.333333333333333% * 12);
+}
+
+.column.offset-1 {
+    margin-left: calc(8.333333333333333% * 1);
+}
+
+.column.offset-2 {
+    margin-left: calc(8.333333333333333% * 2);
+}
+
+.column.offset-3 {
+    margin-left: calc(8.333333333333333% * 3);
+}
+
+.column.offset-4 {
+    margin-left: calc(8.333333333333333% * 4);
+}
+
+.column.offset-5 {
+    margin-left: calc(8.333333333333333% * 5);
+}
+
+.column.offset-6 {
+    margin-left: calc(8.333333333333333% * 6);
+}
+
+.column.offset-7 {
+    margin-left: calc(8.333333333333333% * 7);
+}
+
+.column.offset-8 {
+    margin-left: calc(8.333333333333333% * 8);
+}
+
+.column.offset-9 {
+    margin-left: calc(8.333333333333333% * 9);
+}
+
+.column.offset-10 {
+    margin-left: calc(8.333333333333333% * 10);
+}
+
+.column.offset-11 {
+    margin-left: calc(8.333333333333333% * 11);
+}
+
 .text-center {
     text-align: center;
 }
@@ -36,15 +175,6 @@ a.image-link > img {
 
 .shadow {
     box-shadow: 0 2px 2px rgba(34, 34, 34, 0.25);
-}
-
-.container {
-    position: relative;
-    padding: 0 15px;
-}
-
-.container.wide {
-    padding: 0 10%;
 }
 
 .navbar {
@@ -205,8 +335,10 @@ h6.prompt {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 1px 5px rgba(34, 34, 34, 0.25);
+    display: inline-block;
     overflow: hidden;
     margin: 5px;
+    width: calc(100% - 10px);
 }
 
 .card > .card-image {
@@ -325,12 +457,15 @@ h6.prompt {
 }
 
 .progress > .progress-text {
-    /*color: white;*/
+    color: white;
     display: inline-block;
     font-size: 10px;
     position: absolute;
     text-align: center;
-    /*text-shadow: 0 1px 1px rgba(34, 34, 34, 0.75);*/
+    text-shadow: 1px 0 2px #222,
+        -1px 0 2px #222,
+        0 1px 2px #222,
+        0 -1px 2px #222;
     z-index: 1;
     top: 0;
     height: 100%;
