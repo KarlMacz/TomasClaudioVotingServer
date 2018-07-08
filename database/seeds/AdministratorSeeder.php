@@ -18,6 +18,7 @@ class AdministratorSeeder extends Seeder
             'first_name' => 'Karl',
             'middle_name' => null,
             'last_name' => 'Macz',
+            'gender' => 'Male',
             'email' => 'karljarren0308@gmail.com'
         ]);
 

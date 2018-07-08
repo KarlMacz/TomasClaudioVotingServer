@@ -18,15 +18,19 @@ class StudentSeeder extends Seeder
     public function run()
     {
         $faker = FakerFactory::create();
+        $genders = ['Male', 'Female'];
 
         for($i = 0; $i < 100; $i++) {
             $college = $this->randomCollege();
             $course = $this->randomCourse($college);
 
+            $gender = $genders[mt_rand(0, 1)];
+
             $student = Students::create([
-                'first_name' => $faker->firstName,
+                'first_name' => $faker->firstName($gender),
                 'middle_name' => (mt_rand(0, 9) % 2 === 0 ? $faker->lastName : null),
                 'last_name' => $faker->lastName,
+                'gender' => $gender,
                 'email' => $faker->unique()->email,
                 'college' => $college,
                 'course' => $course

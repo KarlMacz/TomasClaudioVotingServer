@@ -44,7 +44,8 @@ class ApiController extends Controller
                     'image' => $account->image,
                     'first_name' => $account->user_info->first_name,
                     'middle_name' => $account->user_info->middle_name,
-                    'last_name' => $account->user_info->last_name
+                    'last_name' => $account->user_info->last_name,
+                    'gender' => $account->user_info->gender
                 ]
             ];
         } else {
@@ -81,6 +82,7 @@ class ApiController extends Controller
                             'first_name' => $candidate->student_info->first_name,
                             'middle_name' => $candidate->student_info->middle_name,
                             'last_name' => $candidate->student_info->last_name,
+                            'gender' => $candidate->student_info->gender,
                             'candidacy_image' => $candidate->candidacy_image,
                             'college' => $candidate->student_info->college,
                             'course' => $candidate->student_info->course,
@@ -109,6 +111,7 @@ class ApiController extends Controller
                             'first_name' => $candidate->student_info->first_name,
                             'middle_name' => $candidate->student_info->middle_name,
                             'last_name' => $candidate->student_info->last_name,
+                            'gender' => $candidate->student_info->gender,
                             'candidacy_image' => $candidate->candidacy_image,
                             'position' => $candidate->position_info->name,
                             'party' => $candidate->party_info->name,
@@ -138,6 +141,7 @@ class ApiController extends Controller
                             'first_name' => $vote->candidate_info->student_info->first_name,
                             'middle_name' => $vote->candidate_info->student_info->middle_name,
                             'last_name' => $vote->candidate_info->student_info->last_name,
+                            'gender' => $vote->candidate_info->student_info->gender,
                             'candidacy_image' => $vote->candidate_info->candidacy_image,
                             'college' => $vote->candidate_info->student_info->college,
                             'course' => $vote->candidate_info->student_info->course,
