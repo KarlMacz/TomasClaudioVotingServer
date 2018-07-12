@@ -25,6 +25,7 @@ class AdministratorSeeder extends Seeder
         if($admin) {
             Accounts::create([
                 'username' => 'karlmacz',
+                'password' => bcrypt('asd123'),
                 'type' => 'Administrator',
                 'user_id' => $admin->id
             ]);
