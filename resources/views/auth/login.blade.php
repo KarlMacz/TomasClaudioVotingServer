@@ -14,8 +14,12 @@
                                 <label for="">Username:</label>
                                 <input type="text" name="username" class="input-control" required autofocus>
                             </div>
+                            <div class="input-group">
+                                <label for="">Password:</label>
+                                <input type="password" name="password" class="input-control" required>
+                            </div>
                             <div class="input-group text-right">
-                                <button class="button">LOGIN</button>
+                                <button class="button primary">LOGIN</button>
                             </div>
                         </form>
                     </div>

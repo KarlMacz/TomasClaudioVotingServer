@@ -216,6 +216,48 @@ a.image-link > img {
     margin-left: auto;
 }
 
+.navbar > .content .dropdown {
+    display: inline-block;
+    font-size: 15px;
+    position: relative;
+}
+
+.navbar > .content .dropdown > .dropdown-menu {
+    background-color: #4c9261;
+    border-radius: 4px;
+    color: white;
+    display: none;
+    list-style-type: none;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    padding: 0;
+    margin: 5px 0 0 0;
+    min-width: 150px;
+}
+
+.navbar > .content .dropdown > .item.active + .dropdown-menu {
+    display: inline-block;
+}
+
+.navbar > .content .dropdown > .dropdown-menu > li > a {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.25s;
+}
+
+.navbar > .content .dropdown > .dropdown-menu > li > a:hover {
+    background-color: #54a06b;
+}
+
+.navbar > .content .dropdown > .dropdown-menu > li > a:active {
+    background-color: #387e4d;
+}
+
 .navbar > .content .item {
     align-items: center;
     color: white;
@@ -236,6 +278,10 @@ a.image-link > img {
 }
 
 .navbar > .content .item:not(.title):hover {
+    background-color: #54a06b;
+}
+
+.navbar > .content .item:not(.title):active {
     background-color: #387e4d;
 }
 
@@ -274,6 +320,7 @@ a.image-link > img {
 }
 
 .body-content {
+    position: relative;
     padding: 15px 0;
 }
 
@@ -283,6 +330,31 @@ a.image-link > img {
 
 .body-content.fixed-footer {
     padding-bottom: 75px;
+}
+
+.body-content.admin {
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.body-content.admin.fixed-navbar {
+    padding-top: 60px;
+}
+
+.body-content.admin.fixed-footer {
+    padding-bottom: 60px;
+}
+
+.body-content.admin > .sidebar {
+    background-color: #f5f5f5;
+    border-right: 1px solid #ddd;
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 25%;
+    max-width: 350px;
+    box-sizing: border-box;
 }
 
 h1.prompt {
@@ -511,6 +583,10 @@ h6.prompt {
     padding: 0 15px;
     height: 40px;
     min-width: 40px;
+}
+
+.button.primary:hover {
+    background-color: #54a06b;
 }
 
 .button.primary:active {

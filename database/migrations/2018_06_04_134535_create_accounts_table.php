@@ -21,6 +21,7 @@ class CreateAccountsTable extends Migration
             $table->string('image')->unique()->nullable();
             $table->unsignedInteger('user_id');
             $table->boolean('has_voted')->default(false);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

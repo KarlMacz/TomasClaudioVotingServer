@@ -11,6 +11,8 @@
             min-width: 800px;
         }
     </style>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 @yield('resources')
 </head>
 <body>
