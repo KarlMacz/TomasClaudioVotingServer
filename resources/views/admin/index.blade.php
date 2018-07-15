@@ -23,7 +23,16 @@
     </nav>
     <div class="body-content admin fixed-navbar">
         <div class="sidebar">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis ut fuga molestiae laboriosam pariatur nam, sint possimus nulla exercitationem, illum, voluptates dicta ipsam, inventore eveniet illo maiores expedita reiciendis quibusdam.
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
         </div>
     </div>
 @endsection

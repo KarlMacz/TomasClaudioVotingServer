@@ -350,11 +350,22 @@ a.image-link > img {
     background-color: #f5f5f5;
     border-right: 1px solid #ddd;
     display: inline-block;
+    overflow-y: scroll;
     position: relative;
     height: 100%;
     width: 25%;
     max-width: 350px;
     box-sizing: border-box;
+}
+
+.body-content.admin > .sidebar::-webkit-scrollbar {
+    background-color: #f5f5f5;
+    width: 8px;
+}
+
+.body-content.admin > .sidebar::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border: 1px solid #f5f5f5;
 }
 
 h1.prompt {
