@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <nav class="navbar fixed-top shadow">
+    <nav class="navbar shadow">
         <div class="content">
             <div class="left">
                 <div class="item title">{{ config('app.name') }}</div>
@@ -21,18 +21,25 @@
             </div>
         </div>
     </nav>
-    <div class="body-content admin fixed-navbar">
+    <div class="body-content admin">
         <div class="sidebar">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ipsa excepturi officiis facere aperiam nobis optio deserunt dolor, eum, quia illo est at vero incidunt atque fugit labore nulla explicabo!</p>
+            <div style="color: #aaa; font-size: 10px; font-weight: bold; padding: 0 10px; margin-top: 10px;">MENU</div>
+            <ul class="sidebar-list">
+                <li><a href="{{ route('admin.get.index') }}" class="active">Dashboard</a></li>
+                <li><a href="{{ route('admin.get.election_results') }}">Election Results</a></li>
+                <li><a href="{{ route('admin.get.voter_reset') }}">Voter Reset</a></li>
+                <li><a href="{{ route('admin.get.settings') }}">System Settings</a></li>
+            </ul>
+            <div style="color: #aaa; font-size: 10px; font-weight: bold; padding: 0 10px; margin-top: 10px;">DATA MANAGEMENT</div>
+            <ul class="sidebar-list">
+                <li><a href="{{ route('admin.get.candidates') }}">Candidates</a></li>
+                <li><a href="{{ route('admin.get.parties') }}">Parties</a></li>
+                <li><a href="{{ route('admin.get.positions') }}">Positions</a></li>
+                <li><a href="{{ route('admin.get.voters') }}">Voters</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1 class="prompt info text-center" style="margin-top: 0;">Dashboard</h1>
         </div>
     </div>
 @endsection
