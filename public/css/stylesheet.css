@@ -678,3 +678,31 @@ h6.prompt {
     width: 100%;
     box-sizing: border-box;
 }
+
+.table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.table.bordered {
+    border: 1px solid #ddd;
+}
+
+.table thead {
+    border-bottom: 3px solid #ddd;
+}
+
+.table tr:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.table th,
+.table td {
+    padding: 10px 15px;
+}
+
+.table th:not(:last-child),
+.table td:not(:last-child) {
+    border-right: 1px solid #ddd;
+}

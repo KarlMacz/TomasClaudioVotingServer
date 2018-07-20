@@ -40,7 +40,20 @@
         </div>
         <div class="content">
             <h1 class="prompt info text-center" style="margin-top: 0;">Candidates</h1>
-            
+            <table class="table bordered striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Party</th>
+                        <th>Position</th>
+                        <th>Action(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each('partials.table_candidates', $candidates, 'candidate')
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

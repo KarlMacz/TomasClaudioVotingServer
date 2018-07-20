@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Candidates;
+use App\Parties;
+use App\Positions;
+
 class AdminController extends Controller
 {
     public function index()
@@ -28,7 +32,11 @@ class AdminController extends Controller
 
     public function candidates()
     {
-        return view('admin.candidates');
+        $candidates = Candidates::all();
+
+        return view('admin.candidates', [
+            'candidates' => $candidates
+        ]);
     }
 
     public function parties()

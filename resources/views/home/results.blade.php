@@ -9,7 +9,7 @@
             <div class="right">
                 <a href="{{ route('home.get.index') }}" class="item">Home</a>
                 <a href="{{ route('home.get.election_results') }}" class="item active">Election Results</a>
-                <a href="{{ route('home.get.download') }}" class="item">Download</a>
+                <a href="{{ route('login') }}" class="item">Login</a>
             </div>
         </div>
     </nav>
