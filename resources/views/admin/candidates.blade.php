@@ -40,6 +40,9 @@
         </div>
         <div class="content">
             <h1 class="prompt info text-center" style="margin-top: 0;">Candidates</h1>
+            <div class="input-group text-right">
+                <button class="button primary"><span class="fas fa-plus"></span> Add Candidate</button>
+            </div>
             <table class="table bordered striped">
                 <thead>
                     <tr>
@@ -47,13 +50,18 @@
                         <th>Name</th>
                         <th>Party</th>
                         <th>Position</th>
-                        <th>Action(s)</th>
+                        <th width="15%">Action(s)</th>
                     </tr>
                 </thead>
                 <tbody>
                     @each('partials.table_candidates', $candidates, 'candidate')
                 </tbody>
             </table>
+            <div class="pagination">
+                <a href="" class="pagination-prev"><span class="fas fa-chevron-left"></span></a>
+                <a href="" class="pagination-next"><span class="fas fa-chevron-right"></span></a>
+            </div>
+            {{ $candidates->links() }}
         </div>
     </div>
 @endsection

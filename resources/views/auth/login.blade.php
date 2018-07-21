@@ -1,6 +1,7 @@
 @extends('layouts.mobile')
 
 @section('content')
+    <a href="{{ route('home.get.index') }}" class="bling-bling">&#8249; Go Back</a>
     <div class="moblify">
         <div class="moblify-body">
             <div class="text-center">

@@ -251,7 +251,7 @@ a.image-link > img {
 }
 
 .navbar > .content .dropdown > .dropdown-menu > li > a:hover {
-    background-color: #54a06b;
+    background-color: #59ab72;
 }
 
 .navbar > .content .dropdown > .dropdown-menu > li > a:active {
@@ -278,7 +278,7 @@ a.image-link > img {
 }
 
 .navbar > .content .item:not(.title):hover {
-    background-color: #54a06b;
+    background-color: #59ab72;
 }
 
 .navbar > .content .item:not(.title):active {
@@ -355,7 +355,7 @@ a.image-link > img {
     overflow-y: scroll;
     position: relative;
     height: 100%;
-    width: 25%;
+    width: 20%;
     max-width: 350px;
     box-sizing: border-box;
 }
@@ -640,25 +640,82 @@ h6.prompt {
     background-color: #ddd;
 }
 
+.button.small {
+    font-size: 0.75em;
+    font-weight: normal;
+    height: 30px;
+    min-width: 30px;
+}
+
+.button.large {
+    font-size: 1.25em;
+    height: 50px;
+    min-width: 50px;
+}
+
 .button.primary {
     background-color: #4c9261;
-    border: none;
-    border-radius: 4px;
     color: white;
-    cursor: pointer;
-    font-weight: bold;
-    display: inline-block;
-    padding: 0 15px;
-    height: 40px;
-    min-width: 40px;
 }
 
 .button.primary:hover {
-    background-color: #54a06b;
+    background-color: #59ab72;
 }
 
 .button.primary:active {
     background-color: #387e4d;
+}
+
+.button.info {
+    background-color: #5c8dbf;
+    color: white;
+}
+
+.button.info:hover {
+    background-color: #679fd8;
+}
+
+.button.info:active {
+    background-color: #4879ab;
+}
+
+.button.success {
+    background-color: #5abf79;
+    color: white;
+}
+
+.button.success:hover {
+    background-color: #65d889;
+}
+
+.button.success:active {
+    background-color: #46ab65;
+}
+
+.button.warning {
+    background-color: #eacf6c;
+    color: white;
+}
+
+.button.warning:hover {
+    background-color: #f7da72;
+}
+
+.button.warning:active {
+    background-color: #d6bb58;
+}
+
+.button.danger {
+    background-color: #c73a4e;
+    color: white;
+}
+
+.button.danger:hover {
+    background-color: #e04258;
+}
+
+.button.danger:active {
+    background-color: #b3263a;
 }
 
 .input-group {
@@ -682,6 +739,7 @@ h6.prompt {
 .table {
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 15px;
     width: 100%;
 }
 
@@ -705,4 +763,48 @@ h6.prompt {
 .table th:not(:last-child),
 .table td:not(:last-child) {
     border-right: 1px solid #ddd;
+}
+
+.pagination {
+    font-size: 0;
+    margin: 15px 0;
+}
+
+.pagination > .pagination-prev,
+.pagination > .pagination-page,
+.pagination > .pagination-next {
+    background-color: #eee;
+    border: none;
+    color: #222;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 30px;
+    height: 30px;
+    min-width: 30px;
+    box-sizing: border-box;
+}
+
+.pagination > .pagination-prev {
+    border-radius: 4px 0 0 4px;
+}
+
+.pagination > .pagination-next {
+    border-radius: 0 4px 4px 0;
+}
+
+.pagination > .pagination-prev:hover,
+.pagination > .pagination-page:hover,
+.pagination > .pagination-next:hover {
+    background-color: #59ab72;
+    color: white;
+}
+
+.pagination > .pagination-prev:active,
+.pagination > .pagination-page:active,
+.pagination > .pagination-next:active {
+    background-color: #387e4d;
+    color: white;
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
 @yield('meta')
     <title>{{ config('app.name') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
     <style>

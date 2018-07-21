@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
 @yield('meta')
     <title>{{ config('app.name') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
     <style>

@@ -3,8 +3,8 @@
     <td>{{ $candidate->student_info->full_name() }}</td>
     <td>{{ $candidate->party_info->name }}</td>
     <td>{{ $candidate->position_info->name }}</td>
-    <td>
-        <button>Edit</button>
-        <button>Delete</button>
+    <td class="text-center">
+        <button class="button success small"><span class="fas fa-edit"></span></button>
+        <button class="button danger small"><span class="fas fa-trash-alt"></span></button>
     </td>
 </tr>
