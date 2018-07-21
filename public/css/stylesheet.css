@@ -777,14 +777,22 @@ h6.prompt {
     border: none;
     color: #222;
     cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
     display: inline-block;
+    font-size: 15px;
+    text-decoration: none;
     padding: 0 10px;
     line-height: 30px;
     height: 30px;
     min-width: 30px;
     box-sizing: border-box;
+}
+
+.pagination > .pagination-prev.disabled,
+.pagination > .pagination-page.disabled,
+.pagination > .pagination-next.disabled {
+    background-color: #ddd;
+    color: #777;
+    cursor: not-allowed;
 }
 
 .pagination > .pagination-prev {
@@ -795,16 +803,21 @@ h6.prompt {
     border-radius: 0 4px 4px 0;
 }
 
-.pagination > .pagination-prev:hover,
-.pagination > .pagination-page:hover,
-.pagination > .pagination-next:hover {
+.pagination > .pagination-page.active {
+    background-color: #4c9261;
+    color: white;
+}
+
+.pagination > .pagination-prev:not(.active):not(.disabled):hover,
+.pagination > .pagination-page:not(.active):not(.disabled):hover,
+.pagination > .pagination-next:not(.active):not(.disabled):hover {
     background-color: #59ab72;
     color: white;
 }
 
-.pagination > .pagination-prev:active,
-.pagination > .pagination-page:active,
-.pagination > .pagination-next:active {
+.pagination > .pagination-prev:not(.active):not(.disabled):active,
+.pagination > .pagination-page:not(.active):not(.disabled):active,
+.pagination > .pagination-next:not(.active):not(.disabled):active {
     background-color: #387e4d;
     color: white;
 }

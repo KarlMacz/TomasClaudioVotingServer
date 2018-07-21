@@ -32,7 +32,7 @@ class AdminController extends Controller
 
     public function candidates()
     {
-        $candidates = Candidates::simplePaginate(2);
+        $candidates = Candidates::paginate(2);
 
         return view('admin.candidates', [
             'candidates' => $candidates
