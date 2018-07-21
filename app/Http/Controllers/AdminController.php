@@ -54,6 +54,11 @@ class AdminController extends Controller
         return view('admin.voters');
     }
 
+    public function viewCandidate(Request $request)
+    {
+        $candidate = Candidate::where('id', $request->input('id'));
+    }
+
     public function addCandidate(Request $request)
     {
     }

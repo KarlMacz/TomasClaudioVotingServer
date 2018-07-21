@@ -1,26 +1,16 @@
-@extends('layouts.master')
+@extends('layouts.admin')
+
+@section('resources')
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '.view-button', function() {
+
+            });
+        });
+    </script>
+@endsection
 
 @section('content')
-    <nav class="navbar shadow">
-        <div class="content">
-            <div class="left">
-                <div class="item title">{{ config('app.name') }}</div>
-            </div>
-            <div class="right">
-                <div class="dropdown">
-                    <a href="#" class="item">Menu</a>
-                    <ul class="dropdown-menu shadow">
-                        <li>
-                            <a href="#" class="logout-button">Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
     <div class="body-content admin">
         <div class="sidebar">
             <div style="color: #aaa; font-size: 10px; font-weight: bold; padding: 0 10px; margin-top: 10px;">MENU</div>
@@ -58,6 +48,13 @@
                 </tbody>
             </table>
             <div class="text-right">{{ $candidates->links() }}</div>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body"></div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 @endsection
