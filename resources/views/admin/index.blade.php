@@ -19,7 +19,7 @@
             </ul>
         </div>
         <div class="content">
-            <h1 class="prompt info text-center" style="margin-top: 0;">Dashboard</h1>
+            <h1 class="prompt success text-center" style="margin-top: 0;">Dashboard</h1>
         </div>
     </div>
 @endsection

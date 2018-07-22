@@ -31,7 +31,7 @@
         <div class="content">
             <h1 class="prompt success text-center" style="margin-top: 0;">Candidates</h1>
             <div class="input-group text-right">
-                <button class="button primary"><span class="fas fa-plus"></span> Add Candidate</button>
+                <a href="{{ route('admin.get.candidates_add') }}" class="button primary"><span class="fas fa-plus"></span> Add Candidate</a>
             </div>
             <table class="table bordered striped">
                 <thead>
@@ -48,13 +48,6 @@
                 </tbody>
             </table>
             <div class="text-right">{{ $candidates->links() }}</div>
-        </div>
-    </div>
-    <div class="modal">
-        <div class="modal-content">
-            <div class="modal-header"></div>
-            <div class="modal-body"></div>
-            <div class="modal-footer"></div>
         </div>
     </div>
 @endsection

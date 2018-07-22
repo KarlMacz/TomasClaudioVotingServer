@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Candidates;
 use App\Parties;
 use App\Positions;
+use App\Students;
 
 class AdminController extends Controller
 {
@@ -39,6 +40,24 @@ class AdminController extends Controller
         ]);
     }
 
+    public function addCandidate()
+    {
+        $students = Students::all();
+
+        return view('admin.candidates_add', [
+            'students' => $students
+        ]);
+    }
+
+    public function editCandidate($id)
+    {
+        $candidate = Candidates::where('id', $id)->first();
+
+        return view('admin.candidates_edit', [
+            'candidate' => $candidate
+        ]);
+    }
+
     public function parties()
     {
         return view('admin.parties');
@@ -52,14 +71,5 @@ class AdminController extends Controller
     public function voters()
     {
         return view('admin.voters');
-    }
-
-    public function viewCandidate(Request $request)
-    {
-        $candidate = Candidate::where('id', $request->input('id'));
-    }
-
-    public function addCandidate(Request $request)
-    {
     }
 }
