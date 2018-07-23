@@ -42,9 +42,13 @@ class AdminController extends Controller
 
     public function addCandidate()
     {
+        $parties = Parties::all();
+        $positions = Positions::all();
         $students = Students::all();
 
         return view('admin.candidates_add', [
+            'parties' => $parties,
+            'positions' => $positions,
             'students' => $students
         ]);
     }
@@ -52,9 +56,13 @@ class AdminController extends Controller
     public function editCandidate($id)
     {
         $candidate = Candidates::where('id', $id)->first();
+        $parties = Parties::all();
+        $positions = Positions::all();
 
         return view('admin.candidates_edit', [
-            'candidate' => $candidate
+            'candidate' => $candidate,
+            'parties' => $parties,
+            'positions' => $positions
         ]);
     }
 

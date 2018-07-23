@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Candidates;
+
 class Students extends Model
 {
     /**
@@ -26,6 +28,17 @@ class Students extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function is_candidate()
+    {
+        $candidate = Candidates::where('student_id', $this->id)->first();
+
+        if($candidate) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function full_name()
     {

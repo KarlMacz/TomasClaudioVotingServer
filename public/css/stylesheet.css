@@ -619,6 +619,7 @@ a.button {
     padding: 0 15px;
     height: 40px;
     min-width: 40px;
+    box-sizing: border-box;
 }
 
 .button:hover {
@@ -720,10 +721,6 @@ a.button.large {
     margin-bottom: 10px;
     width: 100%;
     box-sizing: border-box;
-}
-
-.input-group:last-child {
-    margin-bottom: 0;
 }
 
 .input-group:not(.file-upload) > .input-control {

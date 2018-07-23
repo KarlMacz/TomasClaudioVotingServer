@@ -19,7 +19,7 @@
                                 <label for="">Password:</label>
                                 <input type="password" name="password" class="input-control" required>
                             </div>
-                            <div class="input-group text-right">
+                            <div class="input-group text-right no-margin">
                                 <button class="button primary">LOGIN</button>
                             </div>
                         </form>

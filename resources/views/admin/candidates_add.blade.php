@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="column span-5">
                             <div class="input-group">
-                                <input type="file" id="image-field" class="image-control" multiple>
+                                <input type="file" id="image-field" class="image-control">
                                 <div class="image-preview">
                                     <div class="text-center"><strong>Choose an image</strong> or drag it here.</div>
                                 </div>
@@ -44,9 +44,24 @@
                         <div class="column span-7">
                             <div class="input-group">
                                 <label for="full-name-field">Full Name:</label>
-                                <select name="" id="full-name-field" class="input-control">
-                                    @each('partials.option_students', $students, 'student')
+                                <select name="student" id="full-name-field" class="input-control">
+                                    @each('partials.option_non_candidate_students', $students, 'student')
                                 </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="party-field">Party:</label>
+                                <select name="party" id="party-field" class="input-control">
+                                    @each('partials.option_parties', $parties, 'party')
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="position-field">Position:</label>
+                                <select name="position" id="position-field" class="input-control">
+                                    @each('partials.option_positions', $positions, 'position')
+                                </select>
+                            </div>
+                            <div class="input-group text-right">
+                                <button type="submit" class="button primary"><span class="fas fa-plus"></span> Add Information</button>
                             </div>
                         </div>
                     </div>
