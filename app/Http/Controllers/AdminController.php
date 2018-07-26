@@ -80,4 +80,49 @@ class AdminController extends Controller
     {
         return view('admin.voters');
     }
+
+    public function storeCandidate(Request $request)
+    {
+        $student = $request->input('student');
+
+        $candidate = Candidates::firstOrNew([
+            'student_id' => $student
+        ]);
+
+        $candidate->position_id = $request->input('position');
+        $candidate->party_id = $request->input('party');
+
+        if($candidate->save()) {
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Candidate information has been recorded.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to record candidate information.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function removeCandidate(Request $request)
+    {
+        $count = Candidates::destroy($request->input('candidate'));
+
+        if($count > 0) {
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Candidate information has been removed.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to remove candidate information.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
 }

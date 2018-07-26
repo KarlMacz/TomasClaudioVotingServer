@@ -32,6 +32,14 @@ function initializeInputFields() {
         parent.find('.file-control-label').html('<div class="text-center">' + files + '</div>');
     });
 
+    $('.file-control').bind('dragenter', function() {
+        $(this).addClass('drag-over');
+    });
+
+    $('.file-control').bind('dragleave drop', function() {
+        $(this).removeClass('drag-over');
+    });
+
     $('body').on('change', '.image-control', function(e) {
         var thisInput = this;
         var parent = $(this).parent();
@@ -51,6 +59,14 @@ function initializeInputFields() {
         } else {
             parent.find('.image-preview').html('<div class="text-center"><strong>Choose an image</strong> or drag it here.</div>');
         }
+    });
+
+    $('.image-control').bind('dragenter', function() {
+        $(this).addClass('drag-over');
+    });
+
+    $('.image-control').bind('dragleave drop', function() {
+        $(this).removeClass('drag-over');
     });
 }
 

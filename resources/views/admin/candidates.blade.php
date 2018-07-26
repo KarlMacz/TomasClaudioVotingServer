@@ -4,7 +4,14 @@
     <script>
         $(document).ready(function() {
             $('body').on('click', '.view-button', function() {
+            });
 
+            $('body').on('click', '.delete-button', function() {
+                $('#delete-form #delete-id').val($(this).attr('data-id'));
+
+                $('#delete-form').submit();
+
+                return false;
             });
         });
     </script>
@@ -28,8 +35,11 @@
                 <li><a href="{{ route('admin.get.voters') }}">Voters</a></li>
             </ul>
         </div>
-        <div class="content">
-            <h1 class="prompt success text-center" style="margin-top: 0;">Candidates</h1>
+        <div class="content navify">
+            <div class="admin-navbar">
+                <div class="admin-navbar-title">Candidates</div>
+            </div>
+            @include('partials.flash')
             <div class="input-group text-right">
                 <a href="{{ route('admin.get.candidates_add') }}" class="button primary"><span class="fas fa-plus"></span> Add Candidate</a>
             </div>
@@ -50,4 +60,8 @@
             <div class="text-right">{{ $candidates->links() }}</div>
         </div>
     </div>
+    <form id="delete-form" action="{{ route('admin.get.candidates_remove') }}" method="POST">
+        {{ csrf_field() }}
+        <input type="hidden" id="delete-id" name="candidate" value="">
+    </form>
 @endsection

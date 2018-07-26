@@ -1,15 +1,5 @@
 @extends('layouts.admin')
 
-@section('resources')
-    <script>
-        $(document).ready(function() {
-            $('body').on('click', '.view-button', function() {
-
-            });
-        });
-    </script>
-@endsection
-
 @section('content')
     <div class="body-content admin">
         <div class="sidebar">
@@ -28,10 +18,16 @@
                 <li><a href="{{ route('admin.get.voters') }}">Voters</a></li>
             </ul>
         </div>
-        <div class="content">
-            <h1 class="prompt success text-center" style="margin-top: 0;">Edit Candidate Information</h1>
+        <div class="content navify">
+            <div class="admin-navbar">
+                <a href="{{ route('admin.get.candidates') }}" class="admin-navbar-button"><span class="fas fa-chevron-left"></span></a>
+                <div class="admin-navbar-title">Edit Candidate Information</div>
+            </div>
+            @include('partials.flash')
             <div class="container wide">
-                <form action="{{ route('admin.get.candidates_add') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.get.candidates_store') }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="student" value="{{ $candidate->student_id }}">
                     <div class="row">
                         <div class="column span-5">
                             @if($candidate->candidacy_image !== null)
@@ -39,7 +35,7 @@
                                 <img src="{{ asset('uploads/' . $candidate->candidacy_image) }}" style="width: 100%;">
                             @endif
                             <div class="input-group">
-                                <input type="file" id="image-field" class="image-control">
+                                <input type="file" name="image" id="image-field" class="image-control">
                                 <div class="image-preview">
                                     <div class="text-center"><strong>Choose an image</strong> or drag it here.</div>
                                 </div>

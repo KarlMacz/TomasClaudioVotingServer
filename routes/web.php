@@ -31,4 +31,7 @@ Route::middleware('auth')->group(function() {
     Route::get('parties', 'AdminController@parties')->name('admin.get.parties');
     Route::get('positions', 'AdminController@positions')->name('admin.get.positions');
     Route::get('voters', 'AdminController@voters')->name('admin.get.voters');
+
+    Route::post('candidates/store', 'AdminController@storeCandidate')->name('admin.get.candidates_store');
+    Route::post('candidates/remove', 'AdminController@removeCandidate')->name('admin.get.candidates_remove');
 });
