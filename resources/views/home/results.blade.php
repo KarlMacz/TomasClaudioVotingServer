@@ -20,23 +20,7 @@
                 <h2 class="text-center">Running for {{ $position->name }}</h2>
                 <div class="card-grid">
                     @if($position->candidates->count() > 0)
-                        @foreach($position->candidates as $candidate)
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="{{ asset('img/test_image.png') }}">
-                                </div>
-                                <div class="card-header">
-                                    <div class="card-title">{{ $candidate->student_info->full_name() }}</div>
-                                    <div class="card-subtitle">{{ $candidate->party_info->name }} Party</div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 50%;"></div>
-                                        <div class="progress-text">{{ $candidate->votes->count() . ($candidate->votes->count() === 1 ? ' vote' : ' votes') }}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                        @each('partials.card_candidates', $position->candidates, 'candidate')
                     @else
                         <div class="prompt">No candidates running for this position.</div>
                     @endif
