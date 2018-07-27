@@ -1,7 +1,7 @@
 <tr>
     <td class="text-center">{{ $voter->id }}</td>
     <td>{{ $voter->full_name() }}</td>
-    <td>{{ $voter->email }}</td>
+    <td>{{ $voter->account_info->email }}</td>
     <td>{{ $voter->gender }}</td>
     <td>{{ $voter->college }}</td>
     <td>{{ $voter->course }}</td>

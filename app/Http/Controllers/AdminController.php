@@ -278,32 +278,33 @@ class AdminController extends Controller
     public function storeVoter(Request $request)
     {
         $id = $request->input('id');
+        $username = $request->input('username');
         $firstName = $request->input('first_name');
         $middleName = $request->input('middle_name', null);
         $lastName = $request->input('last_name');
 
-        $student = Students::firstOrNew([
-            'first_name' => $firstName,
-            'middle_name' => $middleName,
-            'last_name' => $lastName
+        $account = Accounts::firstOrNew([
+            'id' => $id
         ]);
 
-        $student->first_name = $firstName;
-        $student->middle_name = $middleName;
-        $student->last_name = $lastName;
-        $student->gender = $request->input('gender');
-        $student->email = $request->input('email');
-        $student->college = $request->input('college');
-        $student->course = $request->input('course');
+        $account->username = $username;
+        $account->type = 'Student';
+        $account->email = $request->input('email');
 
-        if($student->save()) {
-            $account = new Accounts();
+        if($account->save()) {
+            $student = Students::firstOrNew([
+                'account_id' => $account->id
+            ]);
 
-            $account->username = $request->input('username');
-            $account->type = 'Student';
-            $account->user_id = $student->id;
+            $student->account_id = $account->id;
+            $student->first_name = $firstName;
+            $student->middle_name = $middleName;
+            $student->last_name = $lastName;
+            $student->gender = $request->input('gender');
+            $student->college = $request->input('college');
+            $student->course = $request->input('course');
 
-            $account->save();
+            $student->save();
 
             session()->flash('prompt', [
                 'status' => 'ok',
@@ -323,19 +324,29 @@ class AdminController extends Controller
     {
         $id = $request->input('id');
 
-        $count = Students::destroy($id);
+        $student = Students::where('id', $id)->first();
 
-        if($count > 0) {
-            Accounts::where('student_id', $id)->delete();
+        if($student) {
+            $accountID = $student->account_id;
+            $student2 = Students::where('id', $id)->delete();
 
-            session()->flash('prompt', [
-                'status' => 'ok',
-                'message' => 'Voter information has been removed.'
-            ]);
+            if($student2) {
+                Accounts::where('id', $accountID)->delete();
+
+                session()->flash('prompt', [
+                    'status' => 'ok',
+                    'message' => 'Voter information has been removed.'
+                ]);
+            } else {
+                session()->flash('prompt', [
+                    'status' => 'error',
+                    'message' => 'Failed to remove voter information.'
+                ]);
+            }
         } else {
             session()->flash('prompt', [
                 'status' => 'error',
-                'message' => 'Failed to remove candidate information.'
+                'message' => 'Unknown Voter. His/her information may have already been removed.'
             ]);
         }
 

@@ -14,20 +14,20 @@ class AdministratorSeeder extends Seeder
      */
     public function run()
     {
-        $admin = Administrators::create([
-            'first_name' => 'Karl',
-            'middle_name' => null,
-            'last_name' => 'Macz',
-            'gender' => 'Male',
+        $account = Accounts::create([
+            'username' => 'karlmacz',
+            'password' => bcrypt('asd123'),
+            'type' => 'Administrator',
             'email' => 'karljarren0308@gmail.com'
         ]);
 
-        if($admin) {
-            Accounts::create([
-                'username' => 'karlmacz',
-                'password' => bcrypt('asd123'),
-                'type' => 'Administrator',
-                'user_id' => $admin->id
+        if($account) {
+            Administrators::create([
+                'account_id' => $account->id,
+                'first_name' => 'Karl',
+                'middle_name' => null,
+                'last_name' => 'Macz',
+                'gender' => 'Male'
             ]);
         }
     }

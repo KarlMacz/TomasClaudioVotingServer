@@ -17,9 +17,9 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->string('username')->unique();
             $table->string('password')->nullable();
+            $table->string('email')->nullable();
             $table->string('type')->default('Student');
             $table->string('image')->unique()->nullable();
-            $table->unsignedInteger('user_id');
             $table->boolean('has_voted')->default(false);
             $table->rememberToken();
             $table->timestamps();

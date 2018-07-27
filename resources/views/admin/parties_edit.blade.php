@@ -13,8 +13,8 @@
             <div style="color: #aaa; font-size: 10px; font-weight: bold; padding: 0 10px; margin-top: 10px;">DATA MANAGEMENT</div>
             <ul class="sidebar-list">
                 <li><a href="{{ route('admin.get.candidates') }}">Candidates</a></li>
-                <li><a href="{{ route('admin.get.parties') }}">Parties</a></li>
-                <li><a href="{{ route('admin.get.positions') }}" class="active">Positions</a></li>
+                <li><a href="{{ route('admin.get.parties') }}" class="active">Parties</a></li>
+                <li><a href="{{ route('admin.get.positions') }}">Positions</a></li>
                 <li><a href="{{ route('admin.get.voters') }}">Voters</a></li>
             </ul>
         </div>

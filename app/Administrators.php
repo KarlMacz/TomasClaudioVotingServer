@@ -38,6 +38,6 @@ class Administrators extends Model
 
     public function account_info()
     {
-        return $this->hasOne('App\Accounts', 'user_id', 'id');
+        return $this->belongsTo('App\Accounts', 'account_id', 'id');
     }
 }

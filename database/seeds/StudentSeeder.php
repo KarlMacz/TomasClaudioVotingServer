@@ -26,21 +26,21 @@ class StudentSeeder extends Seeder
 
             $gender = $genders[mt_rand(0, 1)];
 
-            $student = Students::create([
-                'first_name' => $faker->firstName($gender),
-                'middle_name' => (mt_rand(0, 9) % 2 === 0 ? $faker->lastName : null),
-                'last_name' => $faker->lastName,
-                'gender' => $gender,
-                'email' => $faker->unique()->email,
-                'college' => $college,
-                'course' => $course
+            $account = Accounts::create([
+                'username' => mt_rand(2010, (int) date('Y')) . '-' . sprintf('%05d', $i),
+                'type' => 'Student',
+                'email' => $faker->unique()->email
             ]);
 
-            if($student) {
-                Accounts::create([
-                    'username' => mt_rand(2010, (int) date('Y')) . '-' . sprintf('%05d', $i),
-                    'type' => 'Student',
-                    'user_id' => $student->id
+            if($account) {
+                $student = Students::create([
+                    'account_id' => $account->id,
+                    'first_name' => $faker->firstName($gender),
+                    'middle_name' => (mt_rand(0, 9) % 2 === 0 ? $faker->lastName : null),
+                    'last_name' => $faker->lastName,
+                    'gender' => $gender,
+                    'college' => $college,
+                    'course' => $course
                 ]);
 
                 if($student->id % 2 === 0 && $student->id > 90) {

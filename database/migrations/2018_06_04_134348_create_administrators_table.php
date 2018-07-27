@@ -15,11 +15,12 @@ class CreateAdministratorsTable extends Migration
     {
         Schema::create('administrators', function(Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('account_id')->unique();
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('gender');
-            $table->string('email')->nullable();
         });
     }
 

@@ -118,7 +118,7 @@
             <div class="container wide">
                 <form action="{{ route('admin.get.voters_store') }}" method="POST">
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $voter->id }}">
+                    <input type="hidden" name="id" value="{{ $voter->account_info->id }}">
                     <div class="row">
                         <div class="column span-12">
                             <div class="input-group">
@@ -161,7 +161,7 @@
                         <div class="column span-6">
                             <div class="input-group">
                                 <label for="email-field">E-mail Address:</label>
-                                <input type="text" name="email" id="email-field" class="input-control" value="{{ $voter->email }}" required>
+                                <input type="text" name="email" id="email-field" class="input-control" value="{{ $voter->account_info->email }}" required>
                             </div>
                         </div>
                     </div>
