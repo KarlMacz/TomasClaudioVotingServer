@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="column span-5">
                             <div class="input-group">
-                                <input name="image" type="file" id="image-field" class="image-control">
+                                <input type="file" name="image" id="image-field" class="image-control">
                                 <div class="image-preview">
                                     <div class="text-center"><strong>Choose an image</strong> or drag it here.</div>
                                 </div>
@@ -39,19 +39,22 @@
                         <div class="column span-7">
                             <div class="input-group">
                                 <label for="full-name-field">Full Name:</label>
-                                <select name="student" id="full-name-field" class="input-control">
+                                <select name="student" id="full-name-field" class="input-control" required autofocus>
+                                    <option value="" selected disabled>Select an option...</option>
                                     @each('partials.option_non_candidate_students', $students, 'student')
                                 </select>
                             </div>
                             <div class="input-group">
                                 <label for="party-field">Party:</label>
-                                <select name="party" id="party-field" class="input-control">
+                                <select name="party" id="party-field" class="input-control" required>
+                                    <option value="" selected disabled>Select an option...</option>
                                     @each('partials.option_parties', $parties, 'party')
                                 </select>
                             </div>
                             <div class="input-group">
                                 <label for="position-field">Position:</label>
-                                <select name="position" id="position-field" class="input-control">
+                                <select name="position" id="position-field" class="input-control" required>
+                                    <option value="" selected disabled>Select an option...</option>
                                     @each('partials.option_positions', $positions, 'position')
                                 </select>
                             </div>

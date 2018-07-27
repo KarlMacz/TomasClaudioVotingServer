@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Accounts;
 use App\Candidates;
 use App\Parties;
 use App\Positions;
@@ -11,6 +12,9 @@ use App\Students;
 
 class AdminController extends Controller
 {
+    /*
+    * GET Requests
+    */
     public function index()
     {
         return view('admin.index');
@@ -68,19 +72,76 @@ class AdminController extends Controller
 
     public function parties()
     {
-        return view('admin.parties');
+        $parties = Parties::paginate(10);
+
+        return view('admin.parties', [
+            'parties' => $parties
+        ]);
+    }
+
+    public function addParty()
+    {
+        return view('admin.parties_add');
+    }
+
+    public function editParty($id)
+    {
+        $party = Parties::where('id', $id)->first();
+
+        return view('admin.parties_edit', [
+            'party' => $party
+        ]);
     }
 
     public function positions()
     {
-        return view('admin.positions');
+        $positions = Positions::paginate(10);
+
+        return view('admin.positions', [
+            'positions' => $positions
+        ]);
+    }
+
+    public function addPosition()
+    {
+        return view('admin.positions_add');
+    }
+
+    public function editPosition($id)
+    {
+        $position = Positions::where('id', $id)->first();
+
+        return view('admin.positions_edit', [
+            'position' => $position
+        ]);
     }
 
     public function voters()
     {
-        return view('admin.voters');
+        $voters = Students::paginate(100);
+
+        return view('admin.voters', [
+            'voters' => $voters
+        ]);
     }
 
+    public function addVoter()
+    {
+        return view('admin.voters_add');
+    }
+
+    public function editVoter($id)
+    {
+        $student = Students::where('id', $id)->first();
+
+        return view('admin.voters_edit', [
+            'voter' => $student
+        ]);
+    }
+
+    /*
+    * POST Requests
+    */
     public function storeCandidate(Request $request)
     {
         $student = $request->input('student');
@@ -109,12 +170,167 @@ class AdminController extends Controller
 
     public function removeCandidate(Request $request)
     {
-        $count = Candidates::destroy($request->input('candidate'));
+        $count = Candidates::destroy($request->input('id'));
 
         if($count > 0) {
             session()->flash('prompt', [
                 'status' => 'ok',
                 'message' => 'Candidate information has been removed.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to remove candidate information.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function storeParty(Request $request)
+    {
+        $id = $request->input('id');
+
+        $party = Parties::firstOrNew([
+            'id' => $id
+        ]);
+
+        $party->name = $request->input('name');
+
+        if($party->save()) {
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Party information has been recorded.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to record party information.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function removeParty(Request $request)
+    {
+        $count = Parties::destroy($request->input('id'));
+
+        if($count > 0) {
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Party has been removed.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to remove party.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function storePosition(Request $request)
+    {
+        $id = $request->input('id');
+
+        $position = Positions::firstOrNew([
+            'id' => $id
+        ]);
+
+        $position->name = $request->input('name');
+
+        if($position->save()) {
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Position has been recorded.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to record position.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function removePosition(Request $request)
+    {
+        $count = Positions::destroy($request->input('id'));
+
+        if($count > 0) {
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Position has been removed.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to remove position.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function storeVoter(Request $request)
+    {
+        $id = $request->input('id');
+        $firstName = $request->input('first_name');
+        $middleName = $request->input('middle_name', null);
+        $lastName = $request->input('last_name');
+
+        $student = Students::firstOrNew([
+            'first_name' => $firstName,
+            'middle_name' => $middleName,
+            'last_name' => $lastName
+        ]);
+
+        $student->first_name = $firstName;
+        $student->middle_name = $middleName;
+        $student->last_name = $lastName;
+        $student->gender = $request->input('gender');
+        $student->email = $request->input('email');
+        $student->college = $request->input('college');
+        $student->course = $request->input('course');
+
+        if($student->save()) {
+            $account = new Accounts();
+
+            $account->username = $request->input('username');
+            $account->type = 'Student';
+            $account->user_id = $student->id;
+
+            $account->save();
+
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Voter information has been recorded.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to record voter information.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function removeVoter(Request $request)
+    {
+        $id = $request->input('id');
+
+        $count = Students::destroy($id);
+
+        if($count > 0) {
+            Accounts::where('student_id', $id)->delete();
+
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Voter information has been removed.'
             ]);
         } else {
             session()->flash('prompt', [

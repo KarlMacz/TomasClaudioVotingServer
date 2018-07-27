@@ -48,13 +48,15 @@
                             </div>
                             <div class="input-group">
                                 <label for="party-field">Party:</label>
-                                <select name="party" id="party-field" class="input-control">
+                                <select name="party" id="party-field" class="input-control" required autofocus>
+                                    <option value="" selected disabled>Select an option...</option>
                                     @each('partials.option_parties', $parties, 'party')
                                 </select>
                             </div>
                             <div class="input-group">
                                 <label for="position-field">Position:</label>
-                                <select name="position" id="position-field" class="input-control">
+                                <select name="position" id="position-field" class="input-control" required>
+                                    <option value="" selected disabled>Select an option...</option>
                                     @each('partials.option_positions', $positions, 'position')
                                 </select>
                             </div>

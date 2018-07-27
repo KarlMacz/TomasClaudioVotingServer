@@ -62,6 +62,6 @@
     </div>
     <form id="delete-form" action="{{ route('admin.get.candidates_remove') }}" method="POST">
         {{ csrf_field() }}
-        <input type="hidden" id="delete-id" name="candidate" value="">
+        <input type="hidden" id="delete-id" name="id" value="">
     </form>
 @endsection

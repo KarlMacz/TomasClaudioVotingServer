@@ -13,6 +13,9 @@ class HomeController extends Controller
 {
     private $agent = null;
 
+    /*
+    * GET Requests
+    */
     public function __construct()
     {
         $this->agent = new Agent();

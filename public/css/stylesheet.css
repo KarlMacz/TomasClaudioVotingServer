@@ -852,7 +852,7 @@ a.button.large {
 
 .table th,
 .table td {
-    padding: 10px 15px;
+    padding: 10px;
 }
 
 .table th:not(:last-child),
