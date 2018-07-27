@@ -1,0 +1,5 @@
+<option value="College of Arts and Sciences"{{ (!empty($selected_college) && $selected_college === 'College of Arts and Sciences' ? ' selected' : '') }}>College of Arts and Sciences</option>
+<option value="College of Business & Accountancy"{{ (!empty($selected_college) && $selected_college === 'College of Business & Accountancy' ? ' selected' : '') }}>College of Business & Accountancy</option>
+<option value="College of Information Technology"{{ (!empty($selected_college) && $selected_college === 'College of Information Technology' ? ' selected' : '') }}>College of Information Technology</option>
+<option value="College of Education"{{ (!empty($selected_college) && $selected_college === 'College of Education' ? ' selected' : '') }}>College of Education</option>
+<option value="College of Hotel and Restaurant Management"{{ (!empty($selected_college) && $selected_college === 'College of Hotel and Restaurant Management' ? ' selected' : '') }}>College of Hotel and Restaurant Management</option>
