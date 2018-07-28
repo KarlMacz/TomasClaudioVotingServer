@@ -40,7 +40,7 @@ class ApiController extends Controller
                 'data' => [
                     'username' => $account->username,
                     'type' => $account->type,
-                    'has_voted' => $account->has_voted,
+                    'has_voted' => (bool) $account->has_voted,
                     'image' => $account->image,
                     'first_name' => $account->user_info->first_name,
                     'middle_name' => $account->user_info->middle_name,
@@ -70,6 +70,27 @@ class ApiController extends Controller
         $resp = [];
 
         switch($what) {
+            case 'positions':
+                $data = [];
+
+                $positions = Positions::all();
+
+                if($positions->count() > 0) {
+                    foreach($positions as $position) {
+                        $data[] = [
+                            'id' => $position->id,
+                            'name' => $position->name,
+                        ];
+                    }
+                }
+
+                $resp = [
+                    'status' => 'ok',
+                    'message' => 'Request successful.',
+                    'data' => $data
+                ];
+
+                break;
             case 'candidates':
                 $data = [];
 

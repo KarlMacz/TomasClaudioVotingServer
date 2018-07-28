@@ -38,12 +38,13 @@ Route::middleware('auth')->group(function() {
     Route::get('voters/add', 'AdminController@addVoter')->name('admin.get.voters_add');
     Route::get('voters/edit/{id}', 'AdminController@editVoter')->name('admin.get.voters_edit');
 
-    Route::post('candidates/store', 'AdminController@storeCandidate')->name('admin.get.candidates_store');
-    Route::post('candidates/remove', 'AdminController@removeCandidate')->name('admin.get.candidates_remove');
-    Route::post('parties/store', 'AdminController@storeParty')->name('admin.get.parties_store');
-    Route::post('parties/remove', 'AdminController@removeParty')->name('admin.get.parties_remove');
-    Route::post('positions/store', 'AdminController@storePosition')->name('admin.get.positions_store');
-    Route::post('positions/remove', 'AdminController@removePosition')->name('admin.get.positions_remove');
-    Route::post('voters/store', 'AdminController@storeVoter')->name('admin.get.voters_store');
-    Route::post('voters/remove', 'AdminController@removeVoter')->name('admin.get.voters_remove');
+    Route::post('candidates/store', 'AdminController@storeCandidate')->name('admin.post.candidates_store');
+    Route::post('candidates/remove', 'AdminController@removeCandidate')->name('admin.post.candidates_remove');
+    Route::post('parties/store', 'AdminController@storeParty')->name('admin.post.parties_store');
+    Route::post('parties/remove', 'AdminController@removeParty')->name('admin.post.parties_remove');
+    Route::post('positions/store', 'AdminController@storePosition')->name('admin.post.positions_store');
+    Route::post('positions/remove', 'AdminController@removePosition')->name('admin.post.positions_remove');
+    Route::post('voters/store', 'AdminController@storeVoter')->name('admin.post.voters_store');
+    Route::post('voters/remove', 'AdminController@removeVoter')->name('admin.post.voters_remove');
+    Route::post('settings/store', 'AdminController@storeSettings')->name('admin.post.settings_store');
 });

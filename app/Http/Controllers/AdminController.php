@@ -8,6 +8,7 @@ use App\Accounts;
 use App\Candidates;
 use App\Parties;
 use App\Positions;
+use App\Settings;
 use App\Students;
 
 class AdminController extends Controller
@@ -32,7 +33,16 @@ class AdminController extends Controller
 
     public function settings()
     {
-        return view('admin.settings');
+        $sets = [];
+        $settings = Settings::all();
+
+        foreach($settings as $setting) {
+            $sets[$setting->name] = $setting->value;
+        }
+
+        return view('admin.settings', [
+            'settings' => $sets
+        ]);
     }
 
     public function candidates()
@@ -348,6 +358,47 @@ class AdminController extends Controller
                 'status' => 'error',
                 'message' => 'Unknown Voter. His/her information may have already been removed.'
             ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function storeSettings(Request $request)
+    {
+        switch($request->input('setting')) {
+            case 'is_election_started':
+                Settings::updateOrCreate([
+                    'name' => 'is_election_started'
+                ], [
+                    'value' => $request->input('status')
+                ]);
+
+                session()->flash('prompt', [
+                    'status' => 'ok',
+                    'message' => 'Setting has been recorded.'
+                ]);
+
+                break;
+            case 'election_until':
+                Settings::updateOrCreate([
+                    'name' => 'election_until'
+                ], [
+                    'value' => $request->input('date') . ' ' . $request->input('time') . ':00'
+                ]);
+
+                session()->flash('prompt', [
+                    'status' => 'ok',
+                    'message' => 'Setting has been recorded.'
+                ]);
+
+                break;
+            default:
+                session()->flash('prompt', [
+                    'status' => 'error',
+                    'message' => 'Unauthorized access.'
+                ]);
+
+                break;
         }
 
         return redirect()->back();
