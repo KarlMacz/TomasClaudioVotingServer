@@ -13,14 +13,14 @@
                 @if($platform === 'AndroidOS')
                     <a href="" class="image-link"><img src="{{ asset('img/google_play_badge.svg') }}"></a>
                     <span><strong>OR</strong></span>
-                    <a href="" class="image-link"><img src="{{ asset('img/apk_file_badge.png') }}"></a>
+                    <a href="{{ url('app/app-release.apk')}}" class="image-link" download><img src="{{ asset('img/apk_file_badge.png') }}"></a>
                 @elseif($platform === 'iOS')
                     <a href="" class="image-link"><img src="{{ asset('img/app_store_badge.svg') }}"></a>
                 @else
                     <h4>For Android</h4>
                     <a href="" class="image-link"><img src="{{ asset('img/google_play_badge.svg') }}"></a>
                     <span><strong>OR</strong></span>
-                    <a href="" class="image-link"><img src="{{ asset('img/apk_file_badge.png') }}"></a>
+                    <a href="{{ url('app/app-release.apk')}}" class="image-link" download><img src="{{ asset('img/apk_file_badge.png') }}"></a>
                     <h4>For iOS</h4>
                     <a href="" class="image-link"><img src="{{ asset('img/app_store_badge.svg') }}"></a>
                 @endif
