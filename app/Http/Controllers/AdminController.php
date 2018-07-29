@@ -365,41 +365,22 @@ class AdminController extends Controller
 
     public function storeSettings(Request $request)
     {
-        switch($request->input('setting')) {
-            case 'is_election_started':
-                Settings::updateOrCreate([
-                    'name' => 'is_election_started'
-                ], [
-                    'value' => $request->input('status')
-                ]);
+        Settings::updateOrCreate([
+            'name' => 'is_election_started'
+        ], [
+            'value' => $request->input('status', 0)
+        ]);
 
-                session()->flash('prompt', [
-                    'status' => 'ok',
-                    'message' => 'Setting has been recorded.'
-                ]);
+        Settings::updateOrCreate([
+            'name' => 'election_until'
+        ], [
+            'value' => date('Y-m-d H:i:s', strtotime($request->input('date') . ' ' . $request->input('time')))
+        ]);
 
-                break;
-            case 'election_until':
-                Settings::updateOrCreate([
-                    'name' => 'election_until'
-                ], [
-                    'value' => $request->input('date') . ' ' . $request->input('time') . ':00'
-                ]);
-
-                session()->flash('prompt', [
-                    'status' => 'ok',
-                    'message' => 'Setting has been recorded.'
-                ]);
-
-                break;
-            default:
-                session()->flash('prompt', [
-                    'status' => 'error',
-                    'message' => 'Unauthorized access.'
-                ]);
-
-                break;
-        }
+        session()->flash('prompt', [
+            'status' => 'ok',
+            'message' => 'Setting has been recorded.'
+        ]);
 
         return redirect()->back();
     }

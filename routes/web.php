@@ -23,7 +23,6 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::middleware('auth')->group(function() {
     Route::get('dashboard', 'AdminController@index')->name('admin.get.index');
     Route::get('results', 'AdminController@electionResults')->name('admin.get.election_results');
-    Route::get('voter_reset', 'AdminController@voterReset')->name('admin.get.voter_reset');
     Route::get('settings', 'AdminController@settings')->name('admin.get.settings');
     Route::get('candidates', 'AdminController@candidates')->name('admin.get.candidates');
     Route::get('candidates/add', 'AdminController@addCandidate')->name('admin.get.candidates_add');

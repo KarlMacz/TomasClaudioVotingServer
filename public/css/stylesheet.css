@@ -774,10 +774,79 @@ a.button.large {
 
 .input-group:not(.file-upload) > .input-control {
     display: inline-block;
-    padding: 1px 5px;
-    height: 30px;
+    padding: 8px 10px;
+    height: 40px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.input-group > .switch {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    margin-top: 5px;
+    height: 40px;
+    width: 70px;
+}
+
+.input-group > .switch > input {
+    opacity: 0;
+}
+
+.input-group > .switch > .slider {
+    background-color: #ddd;
+    border-radius: 4px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: 0.5s;
+}
+
+.input-group > .switch > .slider::before {
+    background-color: white;
+    border-radius: 4px;
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 30px;
+    width: 30px;
+    transition: 0.5s;
+}
+
+.input-group > .switch > input:checked + .slider {
+    background-color: #4c9261;
+}
+
+.input-group > .switch > input:checked + .slider::before {
+    transform: translateX(30px);
+}
+
+.input-group > .switch.large {
+    height: 80px;
+    width: 140px;
+}
+
+.input-group > .switch.large > .slider::before {
+    top: 10px;
+    left: 10px;
+    height: 60px;
+    width: 60px;
+}
+
+.input-group > .switch.large > input:checked + .slider::before {
+    transform: translateX(60px);
+}
+
+.input-group > .switch.rounded > .slider {
+    border-radius: 30%/50%;
+}
+
+.input-group > .switch.rounded > .slider::before {
+    border-radius: 50%;
 }
 
 .input-group > .file-control,

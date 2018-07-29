@@ -38,13 +38,15 @@ class ApiController extends Controller
                 'status' => 'ok',
                 'message' => 'Login successful.',
                 'data' => [
+                    'id' => $account->id,
                     'username' => $account->username,
                     'type' => $account->type,
                     'has_voted' => (bool) $account->has_voted,
-                    'image' => $account->image,
+                    'image' => ($account->image != null ? ('uploads/' . $account->image) : null),
                     'first_name' => $account->user_info->first_name,
                     'middle_name' => $account->user_info->middle_name,
                     'last_name' => $account->user_info->last_name,
+                    'full_name' => $account->user_info->full_name(),
                     'gender' => $account->user_info->gender
                 ]
             ];
@@ -70,6 +72,20 @@ class ApiController extends Controller
         $resp = [];
 
         switch($what) {
+            case 'submit_votes':
+                foreach ($request->input('candidates') as $value) {
+                    $vote = new Votes();
+                    $vote->account_id = $request->input('account');
+                    $vote->candidate_id = $value;
+                    $vote->save();
+                }
+
+                $resp = [
+                    'status' => 'ok',
+                    'message' => 'Votes successfully submitted.'
+                ];
+
+                break;
             case 'positions':
                 $data = [];
 
@@ -103,8 +119,9 @@ class ApiController extends Controller
                             'first_name' => $candidate->student_info->first_name,
                             'middle_name' => $candidate->student_info->middle_name,
                             'last_name' => $candidate->student_info->last_name,
+                            'full_name' => $candidate->student_info->full_name(),
                             'gender' => $candidate->student_info->gender,
-                            'candidacy_image' => $candidate->candidacy_image,
+                            'candidacy_image' => ($candidate->candidacy_image != null ? ('uploads/' . $candidate->candidacy_image) : null),
                             'college' => $candidate->student_info->college,
                             'course' => $candidate->student_info->course,
                             'position' => $candidate->position_info->name,
@@ -132,8 +149,9 @@ class ApiController extends Controller
                             'first_name' => $candidate->student_info->first_name,
                             'middle_name' => $candidate->student_info->middle_name,
                             'last_name' => $candidate->student_info->last_name,
+                            'full_name' => $candidate->student_info->full_name(),
                             'gender' => $candidate->student_info->gender,
-                            'candidacy_image' => $candidate->candidacy_image,
+                            'candidacy_image' => ($candidate->candidacy_image != null ? ('uploads/' . $candidate->candidacy_image) : null),
                             'position' => $candidate->position_info->name,
                             'party' => $candidate->party_info->name,
                             'number_of_votes' => $candidate->votes->count()
@@ -162,8 +180,9 @@ class ApiController extends Controller
                             'first_name' => $vote->candidate_info->student_info->first_name,
                             'middle_name' => $vote->candidate_info->student_info->middle_name,
                             'last_name' => $vote->candidate_info->student_info->last_name,
+                            'full_name' => $vote->candidate->student_info->full_name(),
                             'gender' => $vote->candidate_info->student_info->gender,
-                            'candidacy_image' => $vote->candidate_info->candidacy_image,
+                            'candidacy_image' => ($vote->candidate->candidacy_image != null ? ('uploads/' . $vote->candidate->candidacy_image) : null),
                             'college' => $vote->candidate_info->student_info->college,
                             'course' => $vote->candidate_info->student_info->course,
                             'position' => $vote->candidate_info->position_info->name,

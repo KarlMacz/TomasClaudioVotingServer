@@ -15,18 +15,18 @@ class AdministratorSeeder extends Seeder
     public function run()
     {
         $account = Accounts::create([
-            'username' => 'karlmacz',
-            'password' => bcrypt('asd123'),
+            'username' => 'admin',
+            'password' => bcrypt('admin'),
             'type' => 'Administrator',
-            'email' => 'karljarren0308@gmail.com'
+            'email' => 'tcc.admin@gmail.com'
         ]);
 
         if($account) {
             Administrators::create([
                 'account_id' => $account->id,
-                'first_name' => 'Karl',
+                'first_name' => 'Juan',
                 'middle_name' => null,
-                'last_name' => 'Macz',
+                'last_name' => 'Dela Cruz',
                 'gender' => 'Male'
             ]);
         }

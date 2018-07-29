@@ -7,7 +7,6 @@
             <ul class="sidebar-list">
                 <li><a href="{{ route('admin.get.index') }}">Dashboard</a></li>
                 <li><a href="{{ route('admin.get.election_results') }}">Election Results</a></li>
-                <li><a href="{{ route('admin.get.voter_reset') }}">Voter Reset</a></li>
                 <li><a href="{{ route('admin.get.settings') }}">System Settings</a></li>
             </ul>
             <div style="color: #aaa; font-size: 10px; font-weight: bold; padding: 0 10px; margin-top: 10px;">DATA MANAGEMENT</div>
@@ -25,7 +24,7 @@
             </div>
             @include('partials.flash')
             <div class="container wide">
-                <form action="{{ route('admin.get.positions_store') }}" method="POST">
+                <form action="{{ route('admin.post.positions_store') }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $position->id }}">
                     <div class="input-group">

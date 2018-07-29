@@ -27,7 +27,7 @@ class StudentSeeder extends Seeder
             $gender = $genders[mt_rand(0, 1)];
 
             $account = Accounts::create([
-                'username' => mt_rand(2010, (int) date('Y')) . '-' . sprintf('%05d', $i),
+                'username' => mt_rand(2010, (int) date('Y')) . '-' . sprintf('%05d', mt_rand(1, 99999)),
                 'type' => 'Student',
                 'email' => $faker->unique()->email
             ]);
