@@ -160,8 +160,12 @@ class AdminController extends Controller
             'student_id' => $student
         ]);
 
+        $image = $request->file('image');
+        $image->move('uploads', $image->getClientOriginalName());
+
         $candidate->position_id = $request->input('position');
         $candidate->party_id = $request->input('party');
+        $candidate->candidacy_image = $image->getClientOriginalName();
 
         if($candidate->save()) {
             session()->flash('prompt', [

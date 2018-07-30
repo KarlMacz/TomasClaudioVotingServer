@@ -73,11 +73,27 @@ class ApiController extends Controller
 
         switch($what) {
             case 'submit_votes':
-                foreach ($request->input('candidates') as $value) {
+                $candidates = $request->input('candidates');
+                $ctr = 0;
+
+                Votes::where('account_id', $request->input('account'))->delete();
+
+                foreach($candidates as $candidate) {
                     $vote = new Votes();
-                    $vote->account_id = $request->input('account');
-                    $vote->candidate_id = $value;
-                    $vote->save();
+
+                    $vote->account_id = (int) $request->input('account');
+                    $vote->candidate_id = (int) $candidate;
+                    
+                    if($vote->save()) {
+                        $ctr++;
+                    }
+                }
+
+                if($ctr > 0) {
+                    $account = Accounts::where('id', $request->input('account'))->first();
+
+                    $account->has_voted = true;
+                    $account->save();
                 }
 
                 $resp = [
