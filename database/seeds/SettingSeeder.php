@@ -17,10 +17,13 @@ class SettingSeeder extends Seeder
             'name' => 'is_election_started',
             'value' => false
         ]);
-
         Settings::create([
             'name' => 'election_until',
             'value' => date('Y-m-d H:i:s')
+        ]);
+        Settings::create([
+            'name' => 'notification',
+            'value' => null
         ]);
     }
 }
