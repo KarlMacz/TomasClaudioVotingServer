@@ -16,5 +16,11 @@ class PartySeeder extends Seeder
         Parties::create([
             'name' => 'Independent'
         ]);
+        Parties::create([
+            'name' => 'Yellow Puffer Fish'
+        ]);
+        Parties::create([
+            'name' => 'Red Chameleon'
+        ]);
     }
 }

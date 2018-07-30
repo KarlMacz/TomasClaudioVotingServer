@@ -34,8 +34,5 @@ class PositionSeeder extends Seeder
         Positions::create([
             'name' => 'PRO'
         ]);
-        Positions::create([
-            'name' => 'Representative'
-        ]);
     }
 }

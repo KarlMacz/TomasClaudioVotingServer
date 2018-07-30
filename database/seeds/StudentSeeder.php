@@ -42,14 +42,6 @@ class StudentSeeder extends Seeder
                     'college' => $college,
                     'course' => $course
                 ]);
-
-                if($student->id % 2 === 0 && $student->id > 90) {
-                    Candidates::insert([
-                        'student_id' => $student->id,
-                        'position_id' => 1,
-                        'party_id' => 1
-                    ]);
-                }
             }
         }
     }
