@@ -1,15 +1,12 @@
 <div class="card">
     <div class="card-image">
-        <img src="{{ asset('img/test_image.png') }}">
+        <img src="{{ ($candidate->candidacy_image != null ? asset('uploads/' . $candidate->candidacy_image) : asset('img/' . ($candidate->student_info->gender === 'Female' ? 'female.png' : 'male.png'))) }}">
     </div>
     <div class="card-header">
         <div class="card-title">{{ $candidate->student_info->full_name() }}</div>
         <div class="card-subtitle">{{ $candidate->party_info->name }} Party</div>
     </div>
-    <div class="card-body">
-        <div class="progress">
-            <div class="progress-bar" style="width: 50%;"></div>
-            <div class="progress-text">{{ $candidate->votes->count() . ($candidate->votes->count() === 1 ? ' vote' : ' votes') }}</div>
-        </div>
+    <div class="card-body" style="background-color: #4c9261; color: white; padding-top: 10px;">
+        <h2 class="text-center no-margin">{{ $candidate->votes->count() . ($candidate->votes->count() === 1 ? ' vote' : ' votes') }}</h2>
     </div>
 </div>

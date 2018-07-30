@@ -21,6 +21,16 @@
             <div class="admin-navbar">
                 <div class="admin-navbar-title">Election Results</div>
             </div>
+            @foreach($positions as $position)
+                <h2 class="text-center">Running for {{ $position->name }}</h2>
+                <div class="card-grid">
+                    @if($position->candidates->count() > 0)
+                        @each('partials.card_candidates', $position->candidates, 'candidate')
+                    @else
+                        <div class="prompt">No candidates running for this position.</div>
+                    @endif
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection

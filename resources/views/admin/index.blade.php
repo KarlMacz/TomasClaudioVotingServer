@@ -21,6 +21,32 @@
             <div class="admin-navbar">
                 <div class="admin-navbar-title">Dashboard</div>
             </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tag">
+                                <div class="tag-header">
+                                    <div class="tag-label large">{{ $voted_students_count }}</div>
+                                    <div class="tag-label">Number of students who already voted</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tag">
+                                <div class="tag-header">
+                                    <div class="tag-label large">{{ $students->count() }}</div>
+                                    <div class="tag-label">Total number of students</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
