@@ -407,8 +407,19 @@ class AdminController extends Controller
             'has_been_notified' => false
         ]);
 
-        Settings::where('name', 'notification')->update([
-            'value' => 'Election results are now released. You may now view the newly elected officers.'
-        ]);
+        $settings = Settings::where('name', 'notification')->first();
+        $settings->value = 'Election results are now released. You may now view the newly elected officers.';
+
+        if($settings->save()) {
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'Election results are now released.'
+            ]);
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to release election results.'
+            ]);
+        }
     }
 }
