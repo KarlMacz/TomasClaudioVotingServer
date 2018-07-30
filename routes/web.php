@@ -46,4 +46,5 @@ Route::middleware('auth')->group(function() {
     Route::post('voters/store', 'AdminController@storeVoter')->name('admin.post.voters_store');
     Route::post('voters/remove', 'AdminController@removeVoter')->name('admin.post.voters_remove');
     Route::post('settings/store', 'AdminController@storeSettings')->name('admin.post.settings_store');
+    Route::post('notifications/results', 'AdminController@resultsNotification')->name('admin.post.notifications_results');
 });
