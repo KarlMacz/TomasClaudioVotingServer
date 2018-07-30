@@ -421,5 +421,7 @@ class AdminController extends Controller
                 'message' => 'Failed to release election results.'
             ]);
         }
+
+        return redirect()->back();
     }
 }
