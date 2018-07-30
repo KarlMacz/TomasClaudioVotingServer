@@ -93,13 +93,24 @@ class ApiController extends Controller
                     $account = Accounts::where('id', $request->input('account'))->first();
 
                     $account->has_voted = true;
-                    $account->save();
-                }
 
-                $resp = [
-                    'status' => 'ok',
-                    'message' => 'Votes successfully submitted.'
-                ];
+                    if($account->save()) {
+                        $resp = [
+                            'status' => 'ok',
+                            'message' => 'Votes successfully submitted.'
+                        ];
+                    } else {
+                        $resp = [
+                            'status' => 'failed',
+                            'message' => 'Failed to submit votes. Please logout and restart the app and try again.'
+                        ];
+                    }
+                } else {
+                    $resp = [
+                        'status' => 'failed',
+                        'message' => 'Failed to submit votes. Please logout and restart the app and try again.'
+                    ];
+                }
 
                 break;
             case 'positions':
