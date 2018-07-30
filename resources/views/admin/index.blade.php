@@ -21,29 +21,43 @@
             <div class="admin-navbar">
                 <div class="admin-navbar-title">Dashboard</div>
             </div>
-            <div class="row">
-                <div class="column">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="tag">
-                                <div class="tag-header">
-                                    <div class="tag-label large">{{ $voted_students_count }}</div>
-                                    <div class="tag-label">Number of students who already voted</div>
+            <div class="container wide">
+                <div class="row">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="tag">
+                                    <div class="tag-header">
+                                        <div class="tag-label large">{{ $voted_students_count }}</div>
+                                        <div class="tag-label">Number of students who already voted</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="tag">
+                                    <div class="tag-header">
+                                        <div class="tag-label large">{{ $students->count() }}</div>
+                                        <div class="tag-label">Total number of students</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="tag">
-                                <div class="tag-header">
-                                    <div class="tag-label large">{{ $students->count() }}</div>
-                                    <div class="tag-label">Total number of students</div>
+                <div class="row">
+                    <div class="column span-4 offset-4">
+                        <div style="margin-top: 10px;">
+                            <form action="" method="POST">
+                                <div class="text-center">
+                                    <button type="submit" class="button primary large">Release Election Results</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
+                        <div class="text-center" style="margin-top: 10px;"><strong>Note:</strong> Releasing election results on mobile devices will notify app users through their phone and e-mail.</div>
                     </div>
                 </div>
             </div>
