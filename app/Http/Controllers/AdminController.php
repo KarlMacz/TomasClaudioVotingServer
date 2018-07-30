@@ -400,4 +400,15 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function resultsNotification()
+    {
+        Accounts::update([
+            'has_been_notified' => false
+        ]);
+
+        Settings::where('name', 'notification')->update([
+            'value' => 'Election results are now released. You may now view the newly elected officers.'
+        ]);
+    }
 }

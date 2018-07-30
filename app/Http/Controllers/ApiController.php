@@ -249,4 +249,35 @@ class ApiController extends Controller
 
         return response()->json($resp);
     }
+
+    public function pushNotification()
+    {
+        $settings = Settings::where('name', 'notification')->first();
+
+        if($settings->value !== null) {
+            $account = Accounts::where('username', $request->input('username'))->first();
+
+            if($account) {
+                if($account->has_been_notified === false) {
+                    $resp = [
+                        'message': $settings->value
+                    ];
+                } else {
+                    $resp = [
+                        'message': null
+                    ];
+                }
+            } else {
+                $resp = [
+                    'message': null
+                ];
+            }
+        } else {
+            $resp = [
+                'message': null
+            ];
+        }
+
+        return response()->json($resp);
+    }
 }
