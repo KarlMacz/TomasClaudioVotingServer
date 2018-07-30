@@ -16,4 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('api')->prefix('json')->group(function() {
     Route::post('auth', 'ApiController@auth');
     Route::post('data/{what}', 'ApiController@data');
+    Route::post('notifications', 'ApiController@pushNotification');
 });
