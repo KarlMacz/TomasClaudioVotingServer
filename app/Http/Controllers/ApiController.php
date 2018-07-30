@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Accounts;
 use App\Candidates;
 use App\Positions;
+use App\Students;
 use App\Settings;
 use App\Votes;
 
@@ -168,6 +169,7 @@ class ApiController extends Controller
                 $data = [];
 
                 $candidates = Candidates::all();
+                $students = Students::all();
 
                 if($candidates->count() > 0) {
                     foreach($candidates as $candidate) {
@@ -181,7 +183,8 @@ class ApiController extends Controller
                             'candidacy_image' => ($candidate->candidacy_image != null ? ('uploads/' . $candidate->candidacy_image) : null),
                             'position' => $candidate->position_info->name,
                             'party' => $candidate->party_info->name,
-                            'number_of_votes' => $candidate->votes->count()
+                            'number_of_votes' => $candidate->votes->count(),
+                            'number_of_votes_percentage' => ((int) (($candidate->votes->count() / $students->count()) * 100)) . '%'
                         ];
                     }
                 }
