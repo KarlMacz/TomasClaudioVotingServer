@@ -18,12 +18,24 @@ class AdminController extends Controller
     */
     public function index()
     {
-        return view('admin.index');
+        $votedStudentsCount = Accounts::where('type', 'Student')->where('has_voted', true)->count();
+        $students = Accounts::where('type', 'Student')->get();
+        $positions = Positions::all();
+        
+        return view('admin.index', [
+            'voted_students_count' => $votedStudentsCount,
+            'students' => $students,
+            'positions' => $positions
+        ]);
     }
 
     public function electionResults()
     {
-        return view('admin.results');
+        $positions = Positions::all();
+
+        return view('admin.results', [
+            'positions' => $positions
+        ]);
     }
 
     public function voterReset()
