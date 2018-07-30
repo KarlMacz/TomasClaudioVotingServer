@@ -27,11 +27,15 @@ class HomeController extends Controller
             return redirect()->route('home.get.download');
         }
 
-        $data['voted_students_count'] = Accounts::where('type', 'Student')->where('has_voted', true)->count();
-        $data['students'] = Accounts::where('type', 'Student')->get();
-        $data['positions'] = Positions::all();
+        $votedStudentsCount = Accounts::where('type', 'Student')->where('has_voted', true)->count();
+        $students = Accounts::where('type', 'Student')->get();
+        $positions = Positions::all();
 
-        return view('home.index', $data);
+        return view('home.index', [
+            'voted_students_count' => $votedStudentsCount,
+            'students' => $students,
+            'positions' => $positions
+        ]);
     }
 
     public function electionResults()
@@ -40,9 +44,11 @@ class HomeController extends Controller
             return redirect()->route('home.get.download');
         }
 
-        $data['positions'] = Positions::all();
+        $positions = Positions::all();
 
-        return view('home.results', $data);
+        return view('home.results', [
+            'positions' => $positions
+        ]);
     }
 
     public function download()
