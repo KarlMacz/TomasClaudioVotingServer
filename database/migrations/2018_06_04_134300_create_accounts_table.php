@@ -21,7 +21,7 @@ class CreateAccountsTable extends Migration
             $table->string('type')->default('Student');
             $table->string('image')->unique()->nullable();
             $table->boolean('has_voted')->default(false);
-            $table->boolean('has_been_notified')->default(false);
+            $table->unsignedInteger('notifications_received')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
