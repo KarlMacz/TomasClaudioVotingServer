@@ -239,13 +239,20 @@ class AdminController extends Controller
         $candidate = Candidates::firstOrNew([
             'student_id' => $student
         ]);
+        
+        if($request->has('image')) {
+            $image = $request->file('image');
 
-        $image = $request->file('image');
-        $image->move('uploads', $image->getClientOriginalName());
+            $image->move('uploads', $image->getClientOriginalName());
 
-        $candidate->position_id = $request->input('position');
-        $candidate->party_id = $request->input('party');
-        $candidate->candidacy_image = $image->getClientOriginalName();
+            $candidate->position_id = $request->input('position');
+            $candidate->party_id = $request->input('party');
+            $candidate->candidacy_image = $image->getClientOriginalName();
+        } else {
+            $candidate->position_id = $request->input('position');
+            $candidate->party_id = $request->input('party');
+            $candidate->candidacy_image = null;
+        }
 
         if($candidate->save()) {
             session()->flash('prompt', [
