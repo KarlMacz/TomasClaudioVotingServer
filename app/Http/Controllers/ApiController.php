@@ -238,6 +238,17 @@ class ApiController extends Controller
                 ];
 
                 break;
+            case 'notified':
+                $username = $request->input('username');
+
+                $account = Accounts::where('username', $username)->increment('notifications_received');
+
+                $resp = [
+                    'status' => 'ok',
+                    'message' => 'Request successful.'
+                ];
+
+                break;
             default:
                 $resp = [
                     'status' => 'failed',
