@@ -166,16 +166,16 @@
                         </div>
                         <div class="column span-5">
                             <div class="input-group">
-                                <label for="year-level-field">Course:</label>
-                                <select name="year_level" id="year-level-field" class="input-control" required>
+                                <label for="course-field">Course:</label>
+                                <select name="course" id="course-field" class="input-control" required>
                                     <option value="" selected disabled>Select an option...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="column span-2">
                             <div class="input-group">
-                                <label for="course-field">Year Level:</label>
-                                <select name="course" id="course-field" class="input-control" required>
+                                <label for="year-level-field">Year Level:</label>
+                                <select name="year_level" id="year-level-field" class="input-control" required>
                                     <option value="" selected disabled>Select an option...</option>
                                     <option value="1">1st Year</option>
                                     <option value="2">2nd Year</option>

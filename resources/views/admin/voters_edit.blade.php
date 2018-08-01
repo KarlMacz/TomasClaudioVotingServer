@@ -187,7 +187,7 @@
                         <div class="column span-2">
                             <div class="input-group">
                                 <label for="year-level-field">Year Level:</label>
-                                <select name="year_level" id="course-field" class="input-control" required>
+                                <select name="year_level" id="year-level-field" class="input-control" required>
                                     <option value="" selected disabled>Select an option...</option>
                                     <option value="1"{{ $voter->year_level === 1 ? ' selected' : '' }}>1st Year</option>
                                     <option value="2"{{ $voter->year_level === 2 ? ' selected' : '' }}>2nd Year</option>
