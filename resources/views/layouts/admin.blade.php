@@ -26,6 +26,7 @@
                 <div class="dropdown">
                     <a href="#" class="item">Menu</a>
                     <ul class="dropdown-menu shadow">
+                        <li><a href="{{ route('admin.get.reports_tally') }}">Reports</a></li>
                         <li>
                             <a href="#" class="logout-button">Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">

@@ -250,8 +250,15 @@ class ApiController extends Controller
         return response()->json($resp);
     }
 
-    public function pushNotification()
+    public function pushNotification(Request $request)
     {
+        if(!$this->verifyApiKey($request->input('app_key'))) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Unauthorized access.'
+            ]);
+        }
+
         $settings = Settings::where('name', 'notification')->first();
 
         if($settings->value !== null) {
@@ -260,7 +267,7 @@ class ApiController extends Controller
             ];
         } else {
             $resp = [
-                'message': null
+                'message' => null
             ];
         }
 

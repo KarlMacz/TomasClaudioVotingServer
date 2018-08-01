@@ -40,7 +40,8 @@ class StudentSeeder extends Seeder
                     'last_name' => $faker->lastName,
                     'gender' => $gender,
                     'college' => $college,
-                    'course' => $course
+                    'course' => $course,
+                    'year_level' => mt_rand(1, 4)
                 ]);
             }
         }

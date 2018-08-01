@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Input;
+
 use App\Accounts;
 use App\Candidates;
 use App\Parties;
 use App\Positions;
 use App\Settings;
 use App\Students;
+
+use DB;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -158,6 +163,69 @@ class AdminController extends Controller
 
         return view('admin.voters_edit', [
             'voter' => $student
+        ]);
+    }
+
+    public function tallyReport()
+    {
+        $candidates = Candidates::all();
+
+        return view('admin.reports_tally', [
+            'candidates' => $candidates
+        ]);
+    }
+
+    public function printTallyReport()
+    {
+        $positions = Positions::all();
+        $highestVotes = [];
+
+        if($positions->count() > 0) {
+            foreach($positions as $position) {
+                if($position->candidates->count() > 0) {
+                    $highest = 0;
+
+                    foreach($position->candidates as $candidate) {
+                        if($candidate->votes->count() > $highest) {
+                            $highest = $candidate->votes->count();
+                        }
+                    }
+
+                    $highestVoteCounts[$position->name] = $highest;
+                }
+            }
+        }
+
+        $pdf = PDF::loadView('pdf.report_tally', [
+            'positions' => $positions,
+            'highest_vote_counts' => $highestVoteCounts
+        ]);
+
+        return $pdf->stream('TCC Worthy Votes - Tally Report.pdf');
+    }
+
+    public function summaryReport()
+    {
+        $searchFor = Input::get('search_for', '');
+        
+        if($searchFor !== '') {
+            $accounts = Students::whereHas('account_info', function($query) {
+                    $query->where('type', 'Student');
+                })
+                ->where('first_name', 'like', '%' . $searchFor . '%')
+                ->orWhere('middle_name', 'like', '%' . $searchFor . '%')
+                ->orWhere('last_name', 'like', '%' . $searchFor . '%')
+                ->orWhere(DB::raw('concat(first_name, " ", middle_name, " ", last_name)'), 'like', '%' . $searchFor . '%')
+                ->orWhere(DB::raw('concat(first_name, " ", last_name)'), 'like', '%' . $searchFor . '%')
+                ->paginate(100);
+        } else {
+            $accounts = Students::whereHas('account_info', function($query) {
+                $query->where('type', 'Student');
+            })->paginate(100);
+        }
+
+        return view('admin.reports_summary', [
+            'accounts' => $accounts
         ]);
     }
 

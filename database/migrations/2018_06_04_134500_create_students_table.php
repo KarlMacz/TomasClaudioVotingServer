@@ -22,6 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('last_name');
             $table->string('gender');
             $table->string('college');
+            $table->unsignedInteger('year_level');
             $table->string('course');
         });
     }
