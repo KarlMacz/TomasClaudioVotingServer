@@ -424,6 +424,7 @@ class AdminController extends Controller
             $student->gender = $request->input('gender');
             $student->college = $request->input('college');
             $student->course = $request->input('course');
+            $student->year_level = $request->input('year_level');
 
             $student->save();
 
