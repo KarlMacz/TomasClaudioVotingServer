@@ -26,11 +26,13 @@ class AdminController extends Controller
         $votedStudentsCount = Accounts::where('type', 'Student')->where('has_voted', true)->count();
         $students = Accounts::where('type', 'Student')->get();
         $positions = Positions::all();
+        $electionUntil = Settings::where('name', 'election_until')->first();
         
         return view('admin.index', [
             'voted_students_count' => $votedStudentsCount,
             'students' => $students,
-            'positions' => $positions
+            'positions' => $positions,
+            'election_until' => $electionUntil->value
         ]);
     }
 
@@ -209,7 +211,7 @@ class AdminController extends Controller
         $searchFor = Input::get('search_for', '');
         
         if($searchFor !== '') {
-            $accounts = Students::whereHas('account_info', function($query) {
+            $students = Students::whereHas('account_info', function($query) {
                     $query->where('type', 'Student');
                 })
                 ->where('first_name', 'like', '%' . $searchFor . '%')
@@ -219,14 +221,32 @@ class AdminController extends Controller
                 ->orWhere(DB::raw('concat(first_name, " ", last_name)'), 'like', '%' . $searchFor . '%')
                 ->paginate(100);
         } else {
-            $accounts = Students::whereHas('account_info', function($query) {
+            $students = Students::whereHas('account_info', function($query) {
                 $query->where('type', 'Student');
             })->paginate(100);
         }
 
         return view('admin.reports_summary', [
-            'accounts' => $accounts
+            'students' => $students
         ]);
+    }
+
+    public function printSummaryReport()
+    {
+        $students = Students::whereHas('account_info', function($query) {
+                $query->where('type', 'Student')
+                    ->where('has_voted', true);
+            })
+            ->orderBy('year_level', 'asc')
+            ->orderBy('last_name', 'asc')
+            ->orderBy('first_name', 'asc')
+            ->get();
+
+        $pdf = PDF::loadView('pdf.report_summary', [
+            'students' => $students
+        ]);
+
+        return $pdf->stream('TCC Worthy Votes - Summary Report.pdf');
     }
 
     /*

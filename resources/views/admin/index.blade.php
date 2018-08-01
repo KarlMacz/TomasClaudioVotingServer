@@ -48,18 +48,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="column span-4 offset-4">
-                        <div style="margin-top: 10px;">
-                            <form action="" method="POST">
-                                <div class="text-center">
-                                    <button type="submit" class="button primary large">Release Election Results</button>
-                                </div>
-                            </form>
+                @if(date('Y-m-d H:i:s', strtotime($election_until)) < date('Y-m-d H:i:s'))
+                    <div class="row">
+                        <div class="column span-4 offset-4">
+                            <div style="margin-top: 10px;">
+                                <form action="" method="POST">
+                                    <div class="text-center">
+                                        <button type="submit" class="button primary large">Release Election Results</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="text-center" style="margin-top: 10px;"><strong>Note:</strong> Releasing election results on mobile devices will notify app users through their phone and e-mail.</div>
                         </div>
-                        <div class="text-center" style="margin-top: 10px;"><strong>Note:</strong> Releasing election results on mobile devices will notify app users through their phone and e-mail.</div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

@@ -37,20 +37,26 @@
                             </div>
                         </form>
                     </div>
+                    <div class="column span-8">
+                        <div class="text-right" style="margin-bottom: 15px;">
+                            <a href="{{ route('admin.get.reports_print_summary') }}" target="_blank" class="button primary">Print Report</a>
+                        </div>
+                    </div>
                 </div>
                 <table class="table bordered striped">
                     <thead>
                         <tr>
                             <th width="5%">ID</th>
-                            <th width="35%">Name</th>
+                            <th width="25%">Name</th>
                             <th>College</th>
                             <th>Course</th>
                             <th width="10%">Year Level</th>
+                            <th width="10%">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if($accounts->count() > 0)
-                            @each('partials.reports_summary', $accounts, 'account')
+                        @if($students->count() > 0)
+                            @each('partials.reports_summary', $students, 'student')
                         @else
                             <tr>
                                 <td colspan="5" class="text-center">No results found.</td>
@@ -58,7 +64,7 @@
                         @endif
                     </tbody>
                 </table>
-                <div class="text-right">{{ $accounts->links() }}</div>
+                <div class="text-right">{{ $students->links() }}</div>
             </div>
         </div>
     </div>

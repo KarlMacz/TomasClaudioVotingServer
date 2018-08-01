@@ -37,8 +37,9 @@ Route::middleware('auth')->group(function() {
     Route::get('voters/add', 'AdminController@addVoter')->name('admin.get.voters_add');
     Route::get('voters/edit/{id}', 'AdminController@editVoter')->name('admin.get.voters_edit');
     Route::get('reports/tally', 'AdminController@tallyReport')->name('admin.get.reports_tally');
-    Route::get('reports/summary', 'AdminController@summaryReport')->name('admin.get.reports_summary');
     Route::get('reports/tally/print', 'AdminController@printTallyReport')->name('admin.get.reports_print_tally');
+    Route::get('reports/summary', 'AdminController@summaryReport')->name('admin.get.reports_summary');
+    Route::get('reports/summary/print', 'AdminController@printSummaryReport')->name('admin.get.reports_print_summary');
 
     Route::post('candidates/store', 'AdminController@storeCandidate')->name('admin.post.candidates_store');
     Route::post('candidates/remove', 'AdminController@removeCandidate')->name('admin.post.candidates_remove');
