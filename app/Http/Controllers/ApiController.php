@@ -42,7 +42,7 @@ class ApiController extends Controller
                     'id' => $account->id,
                     'username' => $account->username,
                     'type' => $account->type,
-                    'has_voted' => (bool) $account->has_voted,
+                    'has_voted' => $account->has_voted,
                     'image' => ($account->image != null ? ('uploads/' . $account->image) : null),
                     'first_name' => $account->user_info->first_name,
                     'middle_name' => $account->user_info->middle_name,
