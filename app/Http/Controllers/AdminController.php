@@ -499,14 +499,12 @@ class AdminController extends Controller
 
     public function resultsNotification()
     {
-        Accounts::update([
-            'has_been_notified' => false
-        ]);
+        $notifications = new Notifications();
 
-        $settings = Settings::where('name', 'notification')->first();
-        $settings->value = 'Election results are now released. You may now view the newly elected officers.';
+        $notifications->title = 'The results are out!';
+        $notifications->content = 'Election results are now released. You may now view the newly elected officers.';
 
-        if($settings->save()) {
+        if($notifications->save()) {
             session()->flash('prompt', [
                 'status' => 'ok',
                 'message' => 'Election results are now released.'
