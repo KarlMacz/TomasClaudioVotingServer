@@ -28,12 +28,14 @@ class AdminController extends Controller
         $students = Accounts::where('type', 'Student')->get();
         $positions = Positions::all();
         $electionUntil = Settings::where('name', 'election_until')->first();
+        $isResultsReleased = Settings::where('name', 'is_results_released')->first();
         
         return view('admin.index', [
             'voted_students_count' => $votedStudentsCount,
             'students' => $students,
             'positions' => $positions,
-            'election_until' => $electionUntil->value
+            'election_until' => $electionUntil->value,
+            'is_results_released' => $isResultsReleased->value
         ]);
     }
 
@@ -502,7 +504,7 @@ class AdminController extends Controller
     {
         $setting = Settings::where('name', 'is_results_released')->first();
 
-        $setting->value = 1;
+        $setting->value = $request->input('status', 0);
 
         if($setting->save()) {
             $notifications = new Notifications();

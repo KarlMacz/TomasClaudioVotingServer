@@ -1,5 +1,16 @@
 @extends('layouts.admin')
 
+@section('resources')
+    <script>
+        $(document).ready(function() {
+            $('body').on('change', '#results-field', function() {
+                $(this).attr('readonly', true);
+                $('#results-form').submit();
+            });
+        });
+    </script>
+@endsection
+
 @section('content')
     <div class="body-content admin">
         <div class="sidebar">
@@ -49,16 +60,26 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="column span-4 offset-4">
-                        <div style="margin-top: 10px;">
-                            <form action="{{ route('admin.post.notifications_results') }}" method="POST">
-                                {{ csrf_field() }}
-                                <div class="text-center">
-                                    <button type="submit" class="button primary large">Release Election Results</button>
-                                </div>
-                            </form>
+                    <div class="column span-6 offset-6">
+                        <div class="input-group no-margin">
+                            <label for="results-field">Release Election Results:</label>
                         </div>
-                        <div class="text-center" style="margin-top: 10px;"><strong>Note:</strong> Releasing election results on mobile devices will notify app users through their phone and e-mail.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column span-2 offset-6">
+                        <form id="results-form" action="{{ route('admin.post.notifications_results') }}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="input-group text-center">
+                                <label class="switch rounded">
+                                    <input type="checkbox" id="results-field" name="status" value="1"{{ ($is_results_released ? ' checked' : '') }}>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="column span-4">
+                        <div><strong>Note:</strong> Releasing election results on mobile devices will notify app users through their phone and e-mail.</div>
                     </div>
                 </div>
             </div>
