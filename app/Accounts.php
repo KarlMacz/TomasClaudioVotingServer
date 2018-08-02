@@ -26,9 +26,9 @@ class Accounts extends Authenticatable
     public function user_info()
     {
         if($this->type === 'Administrator') {
-            return $this->hasOne('App\Administrators', 'id', 'id');
+            return $this->hasOne('App\Administrators', 'account_id', 'id');
         } else {
-            return $this->hasOne('App\Students', 'id', 'id');
+            return $this->hasOne('App\Students', 'account_id', 'id');
         }
     }
 
