@@ -22,8 +22,8 @@ class SettingSeeder extends Seeder
             'value' => date('Y-m-d H:i:s')
         ]);
         Settings::create([
-            'name' => 'notification',
-            'value' => null
+            'name' => 'is_results_released',
+            'value' => 0
         ]);
     }
 }

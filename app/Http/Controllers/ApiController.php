@@ -270,14 +270,25 @@ class ApiController extends Controller
             ]);
         }
 
-        $settings = Settings::where('name', 'notification')->first();
+        $account = Accounts::where('username', $request->input('username'))->first();
 
-        if($settings->value !== null) {
-            $resp = [
-                'message' => $settings->value
-            ];
+        if($account) {
+            $notification = Notifications::where('id', ($account->notifications_received + 1))->first();
+
+            if($notification) {
+                $resp = [
+                    'subject' => $notification->subject,
+                    'message' => $notification->content
+                ];
+            } else {
+                $resp = [
+                    'subject' => null,
+                    'message' => null
+                ];
+            }
         } else {
             $resp = [
+                'subject' => null,
                 'message' => null
             ];
         }
