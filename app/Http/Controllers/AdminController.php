@@ -507,8 +507,8 @@ class AdminController extends Controller
         if($setting->save()) {
             $notifications = new Notifications();
 
-            $notifications->title = 'The results are out!';
-            $notifications->content = 'Election results are now released. You may now view the newly elected officers.';
+            $notifications->subject = 'The results are out!';
+            $notifications->message = 'Election results are now released. You may now view the newly elected officers.';
 
             $notifications->save();
 
