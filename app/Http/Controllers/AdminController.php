@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 
 use App\Accounts;
 use App\Candidates;
+use App\Notifications;
 use App\Parties;
 use App\Positions;
 use App\Settings;
@@ -497,7 +498,7 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function resultsNotification()
+    public function resultsNotification(Request $request)
     {
         $setting = Settings::where('name', 'is_results_released')->first();
 

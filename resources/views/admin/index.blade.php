@@ -53,6 +53,7 @@
                         <div class="column span-4 offset-4">
                             <div style="margin-top: 10px;">
                                 <form action="{{ route('admin.post.notifications_results') }}" method="POST">
+                                    {{ csrf_field() }}
                                     <div class="text-center">
                                         <button type="submit" class="button primary large">Release Election Results</button>
                                     </div>
