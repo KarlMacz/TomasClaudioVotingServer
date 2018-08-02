@@ -26,6 +26,8 @@
                 <a href="{{ route('admin.get.reports_summary') }}" class="tab-item">Report 2</a>
             </div>
             <div class="tab-content">
+                <h2 class="no-margin">Candidates Total Votes</h2>
+                <hr>
                 <div class="text-right" style="margin-bottom: 15px;">
                     <a href="{{ route('admin.get.reports_print_tally') }}" target="_blank" class="button primary">Print Report</a>
                 </div>
