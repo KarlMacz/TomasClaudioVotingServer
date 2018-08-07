@@ -57,7 +57,7 @@ class HomeController extends Controller
 
     public function download()
     {
-        if($this->agent->is('iPhone') || $this->agent->is('AndroidOS')) {
+        if($this->agent->is('iPhone')) {
             return redirect()->route('ios.get.login');
         }
 
