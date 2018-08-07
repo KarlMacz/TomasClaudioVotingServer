@@ -67,6 +67,55 @@
             bottom: 25px;
         }
     </style>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script>
+        function openToasty(id) {
+            $('#' + id + '.toasty').fadeIn(250);
+        }
+
+        function setToasty(id, content) {
+            $('#' + id + '.toasty').text(content);
+        }
+
+        function closeToasty(id) {
+            $('#' + id + '.toasty').fadeOut(250);
+        }
+
+        function openSidedy(id) {
+            $('#' + id + '.sidedy').fadeIn(125, function() {
+                $('#' + id + '.sidedy .sidedy-content').animate({
+                    'left': '0'
+                }, 125);
+            });
+        }
+
+        function closeSidedy(id) {
+            $('#' + id + '.sidedy .sidedy-content').animate({
+                'left': '-80%'
+            }, {
+                duration: 125,
+                complete: function() {
+                    $('#' + id + '.sidedy').fadeOut(125);
+                }
+            });
+        }
+
+        function openLoady() {
+            $('.loady').fadeIn(125);
+        }
+
+        function closeLoady() {
+            $('.loady').fadeOut(125);
+        }
+
+        $(document).ready(function() {
+            $('body').on('click', '.logout-button', function() {
+                $('#logout-form').submit();
+
+                return false;
+            });
+        });
+    </script>
 @yield('resources')
 </head>
 <body>

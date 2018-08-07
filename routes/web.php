@@ -20,6 +20,16 @@ Route::get('register', 'Auth\LoginController@showRegistrationForm')->name('regis
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+Route::prefix('ios')->group(function() {
+    Route::get('login', 'HomeController@iosLogin')->name('ios.get.login');
+    Route::get('home', 'HomeController@iosHome')->name('ios.get.home');
+    Route::get('vote', 'HomeController@iosVote')->name('ios.get.vote');
+    Route::get('ranking', 'HomeController@iosRanking')->name('ios.get.ranking');
+
+    Route::post('login', 'HomeController@postIosLogin')->name('ios.post.login');
+    Route::post('logout', 'HomeController@postIosLogout')->name('ios.post.logout');
+});
+
 Route::middleware('auth')->group(function() {
     Route::get('dashboard', 'AdminController@index')->name('admin.get.index');
     Route::get('results', 'AdminController@electionResults')->name('admin.get.election_results');
