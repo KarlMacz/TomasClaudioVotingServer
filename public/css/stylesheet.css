@@ -591,6 +591,7 @@ a.card:active {
 }
 
 .minty {
+    text-align: center;
     overflow-x: scroll;
     white-space: nowrap;
 }
