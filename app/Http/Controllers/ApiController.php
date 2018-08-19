@@ -273,24 +273,15 @@ class ApiController extends Controller
         $account = Accounts::where('username', $request->input('username'))->first();
 
         if($account) {
-            $notification = Notifications::where('id', ($account->notifications_received + 1))->first();
+            $notifications = Notifications::where('id', '>', ($account->notifications_received))->first();
 
-            if($notification) {
+            if($notifications) {
                 $resp = [
-                    'subject' => $notification->subject,
-                    'message' => $notification->content
-                ];
-            } else {
-                $resp = [
-                    'subject' => null,
-                    'message' => null
+                    'status' => 'ok',
+                    'message' => $notifications->count() . ' notification(s) retrieved.',
+                    'data' => $notifications
                 ];
             }
-        } else {
-            $resp = [
-                'subject' => null,
-                'message' => null
-            ];
         }
 
         return response()->json($resp);
