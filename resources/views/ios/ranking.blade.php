@@ -35,12 +35,20 @@
         <div class="container">
             <h2 class="text-center" style="margin-top: 0;">Ranking</h2>
             @if($positions->count() > 0)
+                <?php
+                    $cc = 0;
+                ?>
                 @foreach($positions as $position)
                     <h3 style="margin-bottom: 5px;">Running for {{ $position->name }}</h3>
                     @if($position->candidates->count() > 0)
                         <div class="minty">
                             @if($is_results_released == 1)
-                                @foreach($position->candidates as $candidate)
+                                <?php
+                                    $candidates = $position->candidates->sortByDesc(function($c) {
+                                        return $c->votes->count();
+                                    });
+                                ?>
+                                @foreach($candidates as $candidate)
                                     <div class="card">
                                         <div class="card-image">
                                             <img src="{{ ($candidate->candidacy_image != null ? asset('uploads/' . $candidate->candidacy_image) : asset('img/' . ($candidate->student_info->gender === 'Female' ? 'female.png' : 'male.png'))) }}">
@@ -52,13 +60,21 @@
                                     </div>
                                 @endforeach
                             @else
-                                @foreach($position->candidates as $index => $candidate)
+                                <?php
+                                    $candidates = $position->candidates->sortByDesc(function($c) {
+                                        return $c->votes->count();
+                                    });
+                                ?>
+                                @foreach($candidates as $candidate)
+                                    <?php
+                                        $cc++;
+                                    ?>
                                     <div class="card">
                                         <div class="card-image">
                                             <img src="{{ asset('img/questionable.png') }}">
                                         </div>
                                         <div class="card-header">
-                                            <div class="card-title" style="color: #4c9261;">Candidate {{ $index + 1 }}</div>
+                                            <div class="card-title" style="color: #4c9261;">Candidate {{ $cc }}</div>
                                             <div class="card-subtitle text-center"><strong>{{ $candidate->votes->count() . '%' }}</strong></div>
                                         </div>
                                     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Accounts;
 use App\Candidates;
+use App\Notifications;
 use App\Positions;
 use App\Students;
 use App\Settings;
@@ -168,7 +169,9 @@ class ApiController extends Controller
             case 'results':
                 $data = [];
 
-                $candidates = Candidates::all();
+                $candidates = Candidates::get()->sortByDesc(function($c) {
+                    return $c->votes->count();
+                });
                 $students = Students::all();
 
                 if($candidates->count() > 0) {
@@ -270,10 +273,30 @@ class ApiController extends Controller
             ]);
         }
 
-        $account = Accounts::where('username', $request->input('username'))->first();
+        $resp = [
+            'status' => 'failed',
+            'message' => ''
+        ];
+        $username = $request->input('username', null);
 
-        if($account) {
-            $notifications = Notifications::where('id', '>', ($account->notifications_received))->first();
+        if($username != null) {
+            $account = Accounts::where('username', $username)->first();
+
+            if($account) {
+                $notifications = Notifications::where('id', '>', ($account->notifications_received))->get();
+
+                if($notifications) {
+                    Accounts::where('username', $username)->increment('notifications_received', $notifications->count());
+
+                    $resp = [
+                        'status' => 'ok',
+                        'message' => $notifications->count() . ' notification(s) retrieved.',
+                        'data' => $notifications
+                    ];
+                }
+            }
+        } else {
+            $notifications = Notifications::orderBy('id', 'desc')->first();
 
             if($notifications) {
                 $resp = [

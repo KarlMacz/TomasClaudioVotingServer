@@ -23,6 +23,23 @@ class HomeController extends Controller
     /*
     * GET Requests
     */
+    public function test()
+    {
+        $unsortedCandidates = Candidates::all();
+        $sortedCandidatesAsc = Candidates::get()->sortBy(function($c) {
+            return $c->votes->count();
+        });
+        $sortedCandidatesDesc = Candidates::get()->sortByDesc(function($c) {
+            return $c->votes->count();
+        });
+
+        return view('home.test', [
+            'unsorted_candidates' => $unsortedCandidates,
+            'sorted_candidates_asc' => $sortedCandidatesAsc,
+            'sorted_candidates_desc' => $sortedCandidatesDesc
+        ]);
+    }
+
     public function index()
     {
         if($this->agent->isMobile()) {
@@ -128,10 +145,14 @@ class HomeController extends Controller
 
         $isResultsReleased = Settings::where('name', 'is_results_released')->first();
         $positions = Positions::all();
+        $candidates = Candidates::get()->sortByDesc(function($c) {
+            return $c->votes->count();
+        });
 
         return view('ios.ranking', [
             'is_results_released' => $isResultsReleased->value,
-            'positions' => $positions
+            'positions' => $positions,
+            'candidates' => $candidates
         ]);
     }
 
