@@ -13,6 +13,8 @@ use App\Settings;
 
 class HomeController extends Controller
 {
+    use Utilities;
+
     private $agent = null;
 
     public function __construct()
@@ -89,6 +91,10 @@ class HomeController extends Controller
             return redirect()->route('ios.get.home');
         }
 
+        if(!$this->agent->is('iPhone')) {
+            return redirect()->route('home.get.index');
+        }
+
         return view('ios.login');
     }
 
@@ -133,7 +139,8 @@ class HomeController extends Controller
         $positions = Positions::all();
 
         return view('ios.vote', [
-            'positions' => $positions
+            'positions' => $positions,
+            'utilities' => $this
         ]);
     }
 
@@ -152,7 +159,8 @@ class HomeController extends Controller
         return view('ios.ranking', [
             'is_results_released' => $isResultsReleased->value,
             'positions' => $positions,
-            'candidates' => $candidates
+            'candidates' => $candidates,
+            'utilities' => $this
         ]);
     }
 
@@ -161,6 +169,10 @@ class HomeController extends Controller
     */
     public function postIosLogin(Request $request)
     {
+        if(!$this->agent->is('iPhone')) {
+            return redirect()->route('home.get.index');
+        }
+        
         $account = Accounts::where('username', $request->input('username'))->where('type', 'Student')->first();
 
         if($account) {

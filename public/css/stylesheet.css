@@ -614,6 +614,12 @@ a.card:active {
     font-size: 10px;
 }
 
+.minty .card > .card-body {
+    font-size: 10px;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+
 .tappable {
     border: 2px solid transparent;
     display: inline-block;

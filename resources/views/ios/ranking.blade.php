@@ -35,10 +35,10 @@
         <div class="container">
             <h2 class="text-center" style="margin-top: 0;">Ranking</h2>
             @if($positions->count() > 0)
-                <?php
-                    $cc = 0;
-                ?>
                 @foreach($positions as $position)
+                    <?php
+                        $cc = 0;
+                    ?>
                     <h3 style="margin-bottom: 5px;">Running for {{ $position->name }}</h3>
                     @if($position->candidates->count() > 0)
                         <div class="minty">
@@ -57,6 +57,7 @@
                                             <div class="card-title" style="color: #4c9261;">{{ $candidate->student_info->full_name() }}</div>
                                             <div class="card-subtitle text-center"><strong>{{ $candidate->votes->count() . '%' }}</strong></div>
                                         </div>
+                                        <div class="card-body text-center"><strong>{{ $utilities->ordinal($candidate->student_info->year_level) }} Year</strong><br>{{ $candidate->student_info->course }}</div>
                                     </div>
                                 @endforeach
                             @else

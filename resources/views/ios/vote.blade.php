@@ -108,8 +108,9 @@
                                         </div>
                                         <div class="card-header">
                                             <div class="card-title" style="color: #4c9261;">{{ $candidate->student_info->full_name() }}</div>
-                                            <div class="card-subtitle">{{ $candidate->party_info->name }}</div>
+                                            <div class="card-subtitle">{{ $candidate->party_info->name }} Party</div>
                                         </div>
+                                        <div class="card-body text-center"><strong>{{ $utilities->ordinal($candidate->student_info->year_level) }} Year</strong><br>{{ $candidate->student_info->course }}</div>
                                     </div>
                                 </a>
                             @endforeach
