@@ -31,6 +31,10 @@
                         <label for="name-field">Party Name:</label>
                         <input type="text" name="name" id="name-field" class="input-control" value="{{ $party->name }}" required autofocus>
                     </div>
+                    <div class="input-group">
+                        <label for="platform-field">Platform:</label>
+                        <textarea name="platform" maxlength="5000" class="input-control no-resize" id="platform-field" rows="5">{{ $party->platform }}</textarea>
+                    </div>
                     <div class="input-group text-right">
                         <button type="submit" class="button primary"><span class="fas fa-check"></span> Save Changes</button>
                     </div>

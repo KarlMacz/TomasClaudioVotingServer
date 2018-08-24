@@ -353,6 +353,7 @@ class AdminController extends Controller
         ]);
 
         $party->name = $request->input('name');
+        $party->platform = $request->input('platform', null);
 
         if($party->save()) {
             session()->flash('prompt', [
