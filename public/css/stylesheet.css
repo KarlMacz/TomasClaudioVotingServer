@@ -863,6 +863,10 @@ a.button.large {
     box-sizing: border-box;
 }
 
+.input-group:not(.file-upload) > textarea.input-control {
+    height: auto;
+}
+
 .input-group > .switch {
     display: inline-block;
     overflow: hidden;
@@ -1310,6 +1314,10 @@ a.button.large {
 
 .no-margin {
     margin: 0;
+}
+
+.no-resize {
+    resize: none;
 }
 
 .text-center {
