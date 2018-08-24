@@ -46,6 +46,10 @@
             background-color: #f5f5f5;
         }
 
+        .table tfoot {
+            border-top: 2px solid #ddd;
+        }
+
         .no-padding {
             padding: 0;
         }

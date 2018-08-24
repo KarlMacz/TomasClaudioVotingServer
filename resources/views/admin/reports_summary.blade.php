@@ -24,6 +24,7 @@
             <div class="tab">
                 <a href="{{ route('admin.get.reports_tally') }}" class="tab-item">Report 1</a>
                 <a href="{{ route('admin.get.reports_summary') }}" class="tab-item active">Report 2</a>
+                <a href="{{ route('admin.get.reports_grouped_summary') }}" class="tab-item">Report 3</a>
             </div>
             <div class="tab-content">
                 <h2 class="no-margin">Summary of students who already voted</h2>

@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function() {
     Route::get('reports/tally/print', 'AdminController@printTallyReport')->name('admin.get.reports_print_tally');
     Route::get('reports/summary', 'AdminController@summaryReport')->name('admin.get.reports_summary');
     Route::get('reports/summary/print', 'AdminController@printSummaryReport')->name('admin.get.reports_print_summary');
+    Route::get('reports/grouped_summary', 'AdminController@groupedSummaryReport')->name('admin.get.reports_grouped_summary');
+    Route::get('reports/grouped_summary/print', 'AdminController@printGroupedSummaryReport')->name('admin.get.reports_print_grouped_summary');
 
     Route::post('candidates/store', 'AdminController@storeCandidate')->name('admin.post.candidates_store');
     Route::post('candidates/remove', 'AdminController@removeCandidate')->name('admin.post.candidates_remove');

@@ -13,12 +13,15 @@ use App\Parties;
 use App\Positions;
 use App\Settings;
 use App\Students;
+use App\Votes;
 
 use DB;
 use PDF;
 
 class AdminController extends Controller
 {
+    use Utilities;
+
     /*
     * GET Requests
     */
@@ -250,6 +253,36 @@ class AdminController extends Controller
         ]);
 
         return $pdf->stream('TCC Worthy Votes - Summary Report.pdf');
+    }
+
+    public function groupedSummaryReport()
+    {
+        $groupedCourses = Students::select('course')->groupBy('course')->get();
+        $groupedYearLevels = Students::select('year_level')->groupBy('year_level')->get();
+        $students = Accounts::where('type', 'Student')->where('has_voted', true)->get();
+
+        return view('admin.reports_grouped_summary', [
+            'grouped_courses' => $groupedCourses,
+            'grouped_year_levels' => $groupedYearLevels,
+            'students' => $students,
+            'utilities' => $this
+        ]);
+    }
+
+    public function printGroupedSummaryReport()
+    {
+        $groupedCourses = Students::select('course')->groupBy('course')->get();
+        $groupedYearLevels = Students::select('year_level')->groupBy('year_level')->get();
+        $students = Accounts::where('type', 'Student')->where('has_voted', true)->get();
+
+        $pdf = PDF::loadView('pdf.report_grouped_summary', [
+            'grouped_courses' => $groupedCourses,
+            'grouped_year_levels' => $groupedYearLevels,
+            'students' => $students,
+            'utilities' => $this
+        ]);
+
+        return $pdf->stream('TCC Worthy Votes - Grouped Summary Report.pdf');
     }
 
     /*
