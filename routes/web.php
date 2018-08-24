@@ -26,6 +26,7 @@ Route::prefix('ios')->group(function() {
     Route::get('login', 'HomeController@iosLogin')->name('ios.get.login');
     Route::get('home', 'HomeController@iosHome')->name('ios.get.home');
     Route::get('vote', 'HomeController@iosVote')->name('ios.get.vote');
+    Route::get('my_vote_history', 'HomeController@iosMyVoteHistory')->name('ios.get.my_vote_history');
     Route::get('ranking', 'HomeController@iosRanking')->name('ios.get.ranking');
 
     Route::post('login', 'HomeController@postIosLogin')->name('ios.post.login');
