@@ -174,7 +174,7 @@ class HomeController extends Controller
             return redirect()->route('ios.get.login');
         }
 
-        $votes = Votes::all();
+        $votes = Votes::where('account_id', session()->get('ios_auth')['id'])->get();
 
         return view('ios.vote_history', [
             'votes' => $votes,
