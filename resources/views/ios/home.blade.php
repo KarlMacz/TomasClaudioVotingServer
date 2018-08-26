@@ -29,10 +29,8 @@
                                 settings[response.data[index].name] = response.data[index].value;
                             }
 
-                            var cdown = countdown(new Date(settings['election_until']), function(ts) {
+                            var cdown = countdown(settings['election_until_epoch'], function(ts) {
                                     $('#countdown').text(('0' + ts.hours).slice(-2) + ':' + ('0' + ts.minutes).slice(-2) + ':' + ('0' + ts.seconds).slice(-2));
-
-                                    $('#test').text(ts.hours + ':' + ts.minutes + ':' + ts.seconds);
 
                                     if($('#countdown').text() === '00:00:00') {
                                         window.clearInterval(cdown);
@@ -88,7 +86,6 @@
     </nav>
     <div class="body-content fixed-navbar">
         <div class="container">
-            <div id="test"></div>
             <div id="countdown-container">
                 @if(date('Y-m-d H:i:s', strtotime($election_until)) < date('Y-m-d H:i:s'))
                     <div class="card">

@@ -232,7 +232,23 @@ class ApiController extends Controller
 
                 break;
             case 'settings':
-                $data = Settings::all();
+                $data = [];
+
+                $settings = Settings::all();
+
+                foreach($settings as $setting) {
+                    if($setting->name === 'election_until') {
+                        $data[] = [
+                            'name' => 'election_until_epoch',
+                            'value' => strtotime($setting->value) * 1000
+                        ];
+                    }
+
+                    $data[] = [
+                        'name' => $setting->name,
+                        'value' => $setting->value
+                    ];
+                }
 
                 $resp = [
                     'status' => 'ok',
