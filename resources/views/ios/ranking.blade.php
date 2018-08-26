@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="card-body text-center"><strong>{{ $utilities->ordinal($candidate->student_info->year_level) }} Year</strong><br>{{ $candidate->student_info->course }}</div>
                                         @if($cc === 1)
-                                            <div class="card-footer text-center" style="background-color: #4c9261; color: white;">Winner</div>
+                                            <div class="card-footer text-center" style="color: #4c9261; font-size: 1.25em; font-weight: bold;"><span class="fas fa-check"></span> Winner</div>
                                         @endif
                                     </div>
                                 @endforeach

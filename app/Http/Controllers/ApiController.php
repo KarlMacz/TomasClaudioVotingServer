@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Accounts;
 use App\Candidates;
 use App\Notifications;
+use App\Parties;
 use App\Positions;
 use App\Students;
 use App\Settings;
@@ -14,6 +15,8 @@ use App\Votes;
 
 class ApiController extends Controller
 {
+    use Utilities;
+
     private function verifyApiKey($applicationKey)
     {
         if($applicationKey === 'bf536f9c54b5e47d8e9e0a94c239008dbdd9831fc27c861f7049988b7267bde6') {
@@ -115,6 +118,28 @@ class ApiController extends Controller
                 }
 
                 break;
+            case 'parties':
+                $data = [];
+
+                $parties = Parties::all();
+
+                if($parties->count() > 0) {
+                    foreach($parties as $party) {
+                        $data[] = [
+                            'id' => $party->id,
+                            'name' => $party->name,
+                            'platform' => $party->platform
+                        ];
+                    }
+                }
+
+                $resp = [
+                    'status' => 'ok',
+                    'message' => 'Request successful.',
+                    'data' => $data
+                ];
+
+                break;
             case 'positions':
                 $data = [];
 
@@ -153,6 +178,7 @@ class ApiController extends Controller
                             'candidacy_image' => ($candidate->candidacy_image != null ? ('uploads/' . $candidate->candidacy_image) : null),
                             'college' => $candidate->student_info->college,
                             'course' => $candidate->student_info->course,
+                            'year_level' => $this->ordinal($candidate->student_info->year_level) . ' Year',
                             'position' => $candidate->position_info->name,
                             'party' => $candidate->party_info->name
                         ];
@@ -184,6 +210,9 @@ class ApiController extends Controller
                             'full_name' => $candidate->student_info->full_name(),
                             'gender' => $candidate->student_info->gender,
                             'candidacy_image' => ($candidate->candidacy_image != null ? ('uploads/' . $candidate->candidacy_image) : null),
+                            'college' => $candidate->student_info->college,
+                            'course' => $candidate->student_info->course,
+                            'year_level' => $this->ordinal($candidate->student_info->year_level) . ' Year',
                             'position' => $candidate->position_info->name,
                             'party' => $candidate->party_info->name,
                             'number_of_votes' => $candidate->votes->count(),
@@ -213,11 +242,12 @@ class ApiController extends Controller
                             'first_name' => $vote->candidate_info->student_info->first_name,
                             'middle_name' => $vote->candidate_info->student_info->middle_name,
                             'last_name' => $vote->candidate_info->student_info->last_name,
-                            'full_name' => $vote->candidate->student_info->full_name(),
+                            'full_name' => $vote->candidate_info->student_info->full_name(),
                             'gender' => $vote->candidate_info->student_info->gender,
-                            'candidacy_image' => ($vote->candidate->candidacy_image != null ? ('uploads/' . $vote->candidate->candidacy_image) : null),
+                            'candidacy_image' => ($vote->candidate_info->candidacy_image != null ? ('uploads/' . $vote->candidate_info->candidacy_image) : null),
                             'college' => $vote->candidate_info->student_info->college,
                             'course' => $vote->candidate_info->student_info->course,
+                            'year_level' => $this->ordinal($vote->candidate_info->student_info->year_level) . ' Year',
                             'position' => $vote->candidate_info->position_info->name,
                             'party' => $vote->candidate_info->party_info->name
                         ];
