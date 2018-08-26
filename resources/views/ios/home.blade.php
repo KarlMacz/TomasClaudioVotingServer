@@ -120,8 +120,29 @@
                             <div style="text-align: center;">Tap here to view ranking.</div>
                         </div>
                     </a>
+                    <a href="{{ route('ios.get.my_vote_history') }}" class="card">
+                        <div class="card-body">
+                            <div style="font-size: 30px; text-align: center;">My Votes</div>
+                            <div style="text-align: center;">Tap here to view all the candidates you voted for.</div>
+                        </div>
+                    </a>
                 @endif
             </div>
+            @if($parties->count() > 0)
+                <div class="card">
+                    <div class="card-body">
+                        <div style="font-size: 30px; text-align: center; margin-bottom: 15px;">Partylist Platforms</div>
+                        @foreach($parties as $party)
+                            <div class="card bordered">
+                                <div class="card-header">
+                                    <div class="card-title">{{ $party->name }} Party</div>
+                                </div>
+                                <div class="card-body">{{ ($party->platform !== null ? $party->platform : 'None') }}</div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <div id="sidedy" class="sidedy">

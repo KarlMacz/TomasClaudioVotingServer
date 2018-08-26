@@ -8,8 +8,10 @@ use Jenssegers\Agent\Agent;
 
 use App\Accounts;
 use App\Candidates;
+use App\Parties;
 use App\Positions;
 use App\Settings;
+use App\Votes;
 
 class HomeController extends Controller
 {
@@ -123,10 +125,12 @@ class HomeController extends Controller
 
         $isElectionStarted = Settings::where('name', 'is_election_started')->first();
         $electionUntil = Settings::where('name', 'election_until')->first();
+        $parties = Parties::all();
 
         return view('ios.home', [
             'is_election_started' => $isElectionStarted->value,
-            'election_until' => $electionUntil->value
+            'election_until' => $electionUntil->value,
+            'parties' => $parties
         ]);
     }
 
@@ -160,6 +164,20 @@ class HomeController extends Controller
             'is_results_released' => $isResultsReleased->value,
             'positions' => $positions,
             'candidates' => $candidates,
+            'utilities' => $this
+        ]);
+    }
+
+    public function iosMyVoteHistory()
+    {
+        if(!session()->has('ios_auth')) {
+            return redirect()->route('ios.get.login');
+        }
+
+        $votes = Votes::all();
+
+        return view('ios.vote_history', [
+            'votes' => $votes,
             'utilities' => $this
         ]);
     }

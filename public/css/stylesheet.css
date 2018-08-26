@@ -20,6 +20,10 @@ hr {
     margin: 5px 0 15px 0;
 }
 
+img.blur {
+    filter: blur(5px);
+}
+
 a.image-link {
     display: inline-block;
     font-size: 0;
@@ -528,6 +532,11 @@ h6.prompt {
     margin: 5px;
     width: calc(100% - 10px);
     transition: 0.25s;
+}
+
+.card.bordered {
+    border: 1px solid #eee;
+    box-shadow: none;
 }
 
 a.card:active {

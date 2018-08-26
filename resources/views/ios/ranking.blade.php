@@ -39,7 +39,7 @@
                     <?php
                         $cc = 0;
                     ?>
-                    <h3 style="margin-bottom: 5px;">Running for {{ $position->name }}</h3>
+                    <h3 style="margin-bottom: 5px;">{{ $position->name }}</h3>
                     @if($position->candidates->count() > 0)
                         <div class="minty">
                             @if($is_results_released == 1)
@@ -49,15 +49,21 @@
                                     });
                                 ?>
                                 @foreach($candidates as $candidate)
-                                    <div class="card">
-                                        <div class="card-image">
-                                            <img src="{{ ($candidate->candidacy_image != null ? asset('uploads/' . $candidate->candidacy_image) : asset('img/' . ($candidate->student_info->gender === 'Female' ? 'female.png' : 'male.png'))) }}">
+                                    <?php
+                                        $cc++;
+                                    ?>
+                                    <div class="card"{!! ($cc === 1 ? ' style="width: 150px;"' : '') !!}>
+                                        <div class="card-image"{!! ($cc === 1 ? ' style="max-height: 150px;"' : '') !!}>
+                                            <img{!! ($cc === 1 ? '' : ' class="blur"') !!} src="{{ ($candidate->candidacy_image != null ? asset('uploads/' . $candidate->candidacy_image) : asset('img/' . ($candidate->student_info->gender === 'Female' ? 'female.png' : 'male.png'))) }}">
                                         </div>
                                         <div class="card-header">
                                             <div class="card-title" style="color: #4c9261;">{{ $candidate->student_info->full_name() }}</div>
                                             <div class="card-subtitle text-center"><strong>{{ $candidate->votes->count() . '%' }}</strong></div>
                                         </div>
                                         <div class="card-body text-center"><strong>{{ $utilities->ordinal($candidate->student_info->year_level) }} Year</strong><br>{{ $candidate->student_info->course }}</div>
+                                        @if($cc === 1)
+                                            <div class="card-footer text-center" style="background-color: #4c9261; color: white;">Winner</div>
+                                        @endif
                                     </div>
                                 @endforeach
                             @else

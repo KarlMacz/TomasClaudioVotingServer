@@ -97,7 +97,7 @@
             <div>Note: Your votes will only be recorded once you press the "Submit Votes" button. Please double check your votes before sending it. You can only send your votes once.</div>
             @if($positions->count() > 0)
                 @foreach($positions as $position)
-                    <h3 style="margin-bottom: 5px;">Running for {{ $position->name }}</h3>
+                    <h3 style="margin-bottom: 5px;">{{ $position->name }}</h3>
                     @if($position->candidates->count() > 0)
                         <div class="minty">
                             @foreach($position->candidates as $candidate)
