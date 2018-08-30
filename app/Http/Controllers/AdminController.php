@@ -190,12 +190,17 @@ class AdminController extends Controller
 
         if($positions->count() > 0) {
             foreach($positions as $position) {
+                $tiedWinners[$position->name] = false;
+
                 if($position->candidates->count() > 0) {
                     $highest = 0;
 
                     foreach($position->candidates as $candidate) {
                         if($candidate->votes->count() > $highest) {
+                            $tiedWinners[$position->name] = false;
                             $highest = $candidate->votes->count();
+                        } else if($candidate->votes->count() == $highest) {
+                            $tiedWinners[$position->name] = true;
                         }
                     }
 
@@ -206,7 +211,8 @@ class AdminController extends Controller
 
         $pdf = PDF::loadView('pdf.report_tally', [
             'positions' => $positions,
-            'highest_vote_counts' => $highestVoteCounts
+            'highest_vote_counts' => $highestVoteCounts,
+            'tied_winners' => $tiedWinners
         ]);
 
         return $pdf->stream('TCC Worthy Votes - Tally Report.pdf');

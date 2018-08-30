@@ -22,7 +22,7 @@
                             <tr>
                                 <td class="text-center">{{ $candidate->student_info->full_name() }}</td>
                                 <td class="text-center">{{ $candidate->votes->count() }}</td>
-                                <td class="text-center">{{ ($candidate->votes->count() > 0 && $candidate->votes->count() === $highest_vote_counts[$position->name] ? 'Winner' : '') }}</td>
+                                <td class="text-center">{{ ($candidate->votes->count() > 0 && $candidate->votes->count() === $highest_vote_counts[$position->name] ? ($tied_winners[$position->name] ? 'Tie' : 'Winner') : '') }}</td>
                             </tr>
                         @endforeach
                     @else
