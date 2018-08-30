@@ -4,7 +4,7 @@
     </div>
     <div class="card-header">
         <div class="card-title">{{ $candidate->student_info->full_name() }}</div>
-        <div class="card-subtitle">{{ $candidate->party_info->name }} Party</div>
+        <div class="card-subtitle">{{ $candidate->party_info->name }} Partylist</div>
     </div>
     <div class="card-body"></div>
     <div class="card-footer" style="background-color: #4c9261; color: white; padding-top: 10px;">

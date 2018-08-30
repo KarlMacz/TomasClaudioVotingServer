@@ -111,7 +111,7 @@
                     <div class="row">
                         <div class="column span-12">
                             <div class="input-group">
-                                <label for="username-field">Username:</label>
+                                <label for="username-field">Student Number:</label>
                                 <input type="text" name="username" id="username-field" class="input-control" required autofocus>
                             </div>
                         </div>

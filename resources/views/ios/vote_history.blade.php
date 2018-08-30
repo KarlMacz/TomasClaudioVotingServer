@@ -105,7 +105,7 @@
                         </div>
                         <div class="card-header">
                             <div class="card-title" style="color: #4c9261;">{{ $vote->candidate_info->student_info->full_name() }}</div>
-                            <div class="card-subtitle"><strong>{{ $vote->candidate_info->party_info->name }} Party</strong></div>
+                            <div class="card-subtitle"><strong>{{ $vote->candidate_info->party_info->name }} Partylist</strong></div>
                         </div>
                         <div class="card-body">{{ $utilities->ordinal($vote->candidate_info->student_info->year_level) }} Year - {{ $vote->candidate_info->student_info->course }}</div>
                     </div>

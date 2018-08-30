@@ -135,7 +135,7 @@
                         @foreach($parties as $party)
                             <div class="card bordered">
                                 <div class="card-header">
-                                    <div class="card-title">{{ $party->name }} Party</div>
+                                    <div class="card-title">{{ $party->name }} Partylist</div>
                                 </div>
                                 <div class="card-body">{{ ($party->platform !== null ? $party->platform : 'None') }}</div>
                             </div>
