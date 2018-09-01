@@ -47,7 +47,6 @@
                     <tr>
                         <th width="5%">ID</th>
                         <th width="20%">Name</th>
-                        <th>E-mail Address</th>
                         <th>Gender</th>
                         <th width="20%">College</th>
                         <th width="20%">Course</th>
