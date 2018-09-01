@@ -11,6 +11,7 @@ use App\Candidates;
 use App\Parties;
 use App\Positions;
 use App\Settings;
+use App\Students;
 use App\Votes;
 
 class HomeController extends Controller
@@ -159,11 +160,13 @@ class HomeController extends Controller
         $candidates = Candidates::get()->sortByDesc(function($c) {
             return $c->votes->count();
         });
+        $students = Students::all();
 
         return view('ios.ranking', [
             'is_results_released' => $isResultsReleased->value,
             'positions' => $positions,
             'candidates' => $candidates,
+            'students' => $students,
             'utilities' => $this
         ]);
     }

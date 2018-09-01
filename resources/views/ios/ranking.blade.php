@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="card-header">
                                             <div class="card-title" style="color: #4c9261;">{{ $candidate->student_info->full_name() }}</div>
-                                            <div class="card-subtitle text-center"><strong>{{ $candidate->votes->count() . '%' }}</strong></div>
+                                            <div class="card-subtitle text-center"><strong>{{ ((int) (($candidate->votes->count() / $students->count()) * 100)) . '%' }}</strong></div>
                                         </div>
                                         <div class="card-body text-center"><strong>{{ $utilities->ordinal($candidate->student_info->year_level) }} Year</strong><br>{{ $candidate->student_info->course }}</div>
                                         @if($cc === 1)
@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="card-header">
                                             <div class="card-title" style="color: #4c9261;">Candidate {{ $cc }}</div>
-                                            <div class="card-subtitle text-center"><strong>{{ $candidate->votes->count() . '%' }}</strong></div>
+                                            <div class="card-subtitle text-center"><strong>{{ ((int) (($candidate->votes->count() / $students->count()) * 100)) . '%' }}</strong></div>
                                         </div>
                                     </div>
                                 @endforeach
