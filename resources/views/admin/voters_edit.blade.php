@@ -159,14 +159,6 @@
                         </div>
                         <div class="column span-6">
                             <div class="input-group">
-                                <label for="email-field">E-mail Address:</label>
-                                <input type="text" name="email" id="email-field" class="input-control" value="{{ $voter->account_info->email }}" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column span-5">
-                            <div class="input-group">
                                 <label for="college-field">College:</label>
                                 <select name="college" id="college-field" class="input-control" required>
                                     <option value="" selected disabled>Select an option...</option>
@@ -176,7 +168,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="column span-5">
+                    </div>
+                    <div class="row">
+                        <div class="column span-6">
                             <div class="input-group">
                                 <label for="course-field">Course:</label>
                                 <select name="course" id="course-field" class="input-control" required>
@@ -184,7 +178,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="column span-2">
+                        <div class="column span-6">
                             <div class="input-group">
                                 <label for="year-level-field">Year Level:</label>
                                 <select name="year_level" id="year-level-field" class="input-control" required>
