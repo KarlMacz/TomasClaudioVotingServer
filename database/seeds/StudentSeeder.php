@@ -20,29 +20,39 @@ class StudentSeeder extends Seeder
         $faker = FakerFactory::create();
         $genders = ['Male', 'Female'];
 
-        for($i = 0; $i < 100; $i++) {
-            $college = $this->randomCollege();
-            $course = $this->randomCourse($college);
+        $studentsCount = 100;
 
-            $gender = $genders[mt_rand(0, 1)];
+        for($i = 0; $i < $studentsCount; $i++) {
+            $generatedUsername = mt_rand(2010, (int) date('Y')) . '-' . sprintf('%05d', mt_rand(1, 99999));
+            
+            $query = Accounts::where('username', $generatedUsername)->first();
 
-            $account = Accounts::create([
-                'username' => mt_rand(2010, (int) date('Y')) . '-' . sprintf('%05d', mt_rand(1, 99999)),
-                'type' => 'Student',
-                'email' => $faker->unique()->email
-            ]);
+            if(!$query) {
+                $college = $this->randomCollege();
+                $course = $this->randomCourse($college);
 
-            if($account) {
-                $student = Students::create([
-                    'account_id' => $account->id,
-                    'first_name' => $faker->firstName($gender),
-                    'middle_name' => (mt_rand(0, 9) % 2 === 0 ? $faker->lastName : null),
-                    'last_name' => $faker->lastName,
-                    'gender' => $gender,
-                    'college' => $college,
-                    'course' => $course,
-                    'year_level' => mt_rand(1, 4)
+                $gender = $genders[mt_rand(0, 1)];
+
+                $account = Accounts::create([
+                    'username' => $generatedUsername,
+                    'type' => 'Student',
+                    'email' => $faker->unique()->email
                 ]);
+
+                if($account) {
+                    $student = Students::create([
+                        'account_id' => $account->id,
+                        'first_name' => $faker->firstName($gender),
+                        'middle_name' => (mt_rand(0, 9) % 2 === 0 ? $faker->lastName : null),
+                        'last_name' => $faker->lastName,
+                        'gender' => $gender,
+                        'college' => $college,
+                        'course' => $course,
+                        'year_level' => mt_rand(1, 4)
+                    ]);
+                }
+            } else {
+                $studentsCount += 1;
             }
         }
     }

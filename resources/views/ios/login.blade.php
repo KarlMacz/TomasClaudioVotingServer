@@ -91,6 +91,7 @@
             </div>
         </div>
         <div class="login-body">
+            @include('partials.flash')
             <form action="{{ route('ios.post.login') }}" method="POST" style="width: 100%;">
                 {{ csrf_field() }}
                 <div class="input-group">

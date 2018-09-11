@@ -15,6 +15,7 @@ use App\Settings;
 use App\Students;
 use App\Votes;
 
+use Artisan;
 use DB;
 use PDF;
 
@@ -538,6 +539,44 @@ class AdminController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    public function resetSystem(Request $request)
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        DB::table('accounts')->truncate();
+        DB::table('administrators')->truncate();
+        DB::table('candidates')->truncate();
+        DB::table('migrations')->truncate();
+        DB::table('notifications')->truncate();
+        DB::table('parties')->truncate();
+        DB::table('positions')->truncate();
+        DB::table('settings')->truncate();
+        DB::table('students')->truncate();
+        DB::table('votes')->truncate();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        $exitCode = Artisan::call('db:seed');
+
+        if($exitCode === 0) {
+            session()->invalidate();
+
+            session()->flash('prompt', [
+                'status' => 'ok',
+                'message' => 'System reset successful. Due to this action, you have been forced to logout of the system.'
+            ]);
+
+            return redirect()->route('login');
+        } else {
+            session()->flash('prompt', [
+                'status' => 'error',
+                'message' => 'Failed to execute system reset. Please refresh the page and try again.'
+            ]);
+
+            return redirect()->back();
+        }
     }
 
     public function resultsNotification(Request $request)

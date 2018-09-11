@@ -40,50 +40,74 @@
             </div>
             @include('partials.flash')
             <div class="container wide">
-                <form action="{{ route('admin.post.settings_store') }}" method="POST">
-                    {{ csrf_field() }}
-                    <div class="row">
-                        <div class="column span-12">
-                            <div class="input-group no-margin">
-                                <label for="election-status-field">Election Status:</label>
-                            </div>
+                <div class="row">
+                    <div class="column">
+                        <form action="{{ route('admin.post.settings_store') }}" method="POST">
+                            {{ csrf_field() }}
                             <div class="row">
-                                <div class="column span-2">
-                                    <div class="input-group text-center">
-                                        <label class="switch rounded">
-                                            <input type="checkbox" id="election-status-field" name="status" value="1"{{ ($settings['is_election_started'] ? ' checked' : '') }}>
-                                            <span class="slider"></span>
-                                        </label>
+                                <div class="column span-12">
+                                    <div class="input-group no-margin">
+                                        <label for="election-status-field">Election Status:</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="column span-2">
+                                            <div class="input-group text-center">
+                                                <label class="switch rounded">
+                                                    <input type="checkbox" id="election-status-field" name="status" value="1"{{ ($settings['is_election_started'] ? ' checked' : '') }}>
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="column span-10">
+                                            <div class="prompt no-margin">The server is currently <strong>{{ ($settings['is_election_started'] ? 'running' : 'stopped') }}</strong>.</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="column span-10">
-                                    <div class="prompt no-margin">The server is currently <strong>{{ ($settings['is_election_started'] ? 'running' : 'stopped') }}</strong>.</div>
+                            </div>
+                            <div class="row">
+                                <div class="column span-6">
+                                    <div class="input-group">
+                                        <label for="election-date-field">Election until Date:</label>
+                                        <input type="date" name="date" id="election-date-field" class="input-control" value="{{ date('Y-m-d', strtotime($settings['election_until'])) }}" required>
+                                    </div>
+                                </div>
+                                <div class="column span-6">
+                                    <div class="input-group">
+                                        <label for="election-time-field">Election until Time:</label>
+                                        <input type="time" name="time" id="election-time-field" class="input-control" value="{{ date('H:i:s', strtotime($settings['election_until'])) }}" required>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="column span-12">
+                                    <div class="input-group text-right">
+                                        <button type="submit" class="button primary"><span class="fas fa-check"></span> Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="column span-6">
-                            <div class="input-group">
-                                <label for="election-date-field">Election until Date:</label>
-                                <input type="date" name="date" id="election-date-field" class="input-control" value="{{ date('Y-m-d', strtotime($settings['election_until'])) }}" required>
+                    <div class="column span-3">
+                        <div class="row">
+                            <div class="column">
+                                <div class="input-group">
+                                    <label for="election-status-field">System Reset:</label>
+                                </div>
+                                @if(!$settings['is_election_started'])
+                                    <div class="prompt danger"><strong>Warning</strong>: This module will delete all uploaded pictures and reset the database. Use this at your own risk.</div>
+                                    <form action="{{ route('admin.post.settings_reset') }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <div class="input-group text-center">
+                                            <button type="submit" class="button danger"><span class="fas fa-exclamation"></span> Execute Reset</button>
+                                        </div>
+                                    </form>
+                                @else
+                                    <div class="prompt">You are not allowed to use this module while the server is running.</div>
+                                @endif
                             </div>
                         </div>
-                        <div class="column span-6">
-                            <div class="input-group">
-                                <label for="election-time-field">Election until Time:</label>
-                                <input type="time" name="time" id="election-time-field" class="input-control" value="{{ date('H:i:s', strtotime($settings['election_until'])) }}" required>
-                            </div>
-                        </div>
                     </div>
-                    <div class="row">
-                        <div class="column span-12">
-                            <div class="input-group text-right">
-                                <button type="submit" class="button primary"><span class="fas fa-check"></span> Save Changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
