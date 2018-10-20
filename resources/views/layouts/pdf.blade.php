@@ -50,6 +50,43 @@
             border-top: 2px solid #ddd;
         }
 
+        .signatories {
+            font-size: 0;
+        }
+
+        .signatory {
+            display: inline-block;
+            font-size: 15px;
+            white-space: nowrap;
+            vertical-align: top;
+            height: 120px;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .signatory > .signatory-info {
+            padding: 5px;
+            margin-top: 50px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .signatory > .signatory-info::before {
+            border-top: 1px solid #222;
+            content: '';
+            display: inline-block;
+            margin-left: -5px;
+            width: 90%;
+        }
+
+        .signatory > .signatory-info > span {
+            font-size: 12px;
+        }
+
+        .serif-font {
+            font-family: serif;
+        }
+
         .no-padding {
             padding: 0;
         }

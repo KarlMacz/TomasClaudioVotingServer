@@ -72,6 +72,10 @@
                                             $total += $ctr;
                                         ?>
                                     @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2" class="text-center">No results found.</td>
+                                    </tr>
                                 @endif
                             </tbody>
                             <tfoot>

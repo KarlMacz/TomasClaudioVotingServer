@@ -33,6 +33,9 @@
                 <div class="admin-navbar-title">Dashboard</div>
             </div>
             <div class="container wide">
+                <div class="text-center">
+                    <img src="img/sscl_logo.png" style="width: 30%;">
+                </div>
                 <div class="row">
                     <div class="column">
                         <div class="card">
